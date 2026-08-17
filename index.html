@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sku Addons — ZenqFR</title>
+<meta name="description" content="Modules complémentaires d'accessibilité pour Sku (WoW: The Burning Crusade Classic).">
+<style>
+  :root {
+    --bg: #16130f;
+    --bg-card: #211c17;
+    --bg-card-border: #362e25;
+    --text: #efe6da;
+    --text-dim: #b4a898;
+    --text-faint: #83786a;
+    --accent: #e8a85f;
+    --accent-strong: #f0b877;
+    --accent-text: #1c1712;
+    --pill-bg: #2a231c;
+    --pill-border: #493c2e;
+    --focus: #f4c98a;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  a { color: var(--accent-strong); }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--accent);
+    color: var(--accent-text);
+    padding: 0.6em 1em;
+    border-radius: 0 0 8px 0;
+    z-index: 10;
+  }
+  .skip-link:focus { left: 0; }
+
+  header {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3em 1.5em 1.5em;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 0.3em;
+    font-size: 2.1rem;
+    color: var(--accent-strong);
+  }
+  header p {
+    margin: 0;
+    color: var(--text-dim);
+  }
+
+  .intro {
+    max-width: 760px;
+    margin: 0 auto 2em;
+    padding: 0 1.5em;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .intro code {
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    border-radius: 6px;
+    padding: 0.1em 0.4em;
+    font-size: 0.9em;
+  }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5em 4em;
+  }
+
+  h2.section-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--bg-card-border);
+    padding-bottom: 0.5em;
+    margin: 2.5em 0 1.2em;
+  }
+  h2.section-title:first-of-type { margin-top: 0; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--bg-card-border);
+    border-radius: var(--radius);
+    padding: 1.4em 1.5em;
+    margin-bottom: 1.2em;
+  }
+  .card h3 {
+    margin: 0 0 0.5em;
+    font-size: 1.25rem;
+    color: var(--accent-strong);
+  }
+  .dep-pill {
+    display: inline-block;
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    margin-bottom: 0.9em;
+  }
+  .card p.desc {
+    margin: 0 0 1.1em;
+    color: var(--text);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7em;
+    margin-bottom: 1em;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6em 1.1em;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-text);
+  }
+  .btn-primary:hover { background: var(--accent-strong); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--pill-border);
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent-strong); }
+
+  .meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    border-top: 1px solid var(--bg-card-border);
+    padding-top: 0.9em;
+  }
+  .meta strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    margin-bottom: 0.3em;
+  }
+  .meta ul { margin: 0; padding: 0; list-style: none; }
+
+  .card.upcoming {
+    border-style: dashed;
+    background: transparent;
+  }
+  .card.upcoming h3 { color: var(--text-dim); }
+  .card.upcoming p { color: var(--text-faint); margin: 0; }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5em 3em;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--text-dim); }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    .meta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header>
+  <h1>Sku Addons</h1>
+  <p>Modules complémentaires d'accessibilité pour <strong>Sku</strong> — WoW: The Burning Crusade Classic (Anniversary)</p>
+</header>
+
+<p class="intro">
+  Chaque bouton télécharge la dernière version de l'addon au format <code>.zip</code>.
+  Tous nécessitent l'addon <a href="https://github.com/ZenqFR/Sku-WoW-Addon-TBC" target="_blank" rel="noopener">Sku</a>.
+</p>
+
+<main id="main">
+
+  <h2 class="section-title">Disponibles</h2>
+
+  <article class="card" id="skubagnonbridge" aria-labelledby="skubagnonbridge-title">
+    <h3 id="skubagnonbridge-title">SkuBagnonBridge</h3>
+    <span class="dep-pill">Dépendance : Sku · Optionnel : Bagnon ou BagBrother</span>
+    <p class="desc">
+      Rend Sku compatible avec l'addon de sacs <strong>Bagnon / BagBrother</strong> : annonce vocale à l'ouverture
+      et à la fermeture des sacs, tri déclenchable au clavier (<code>/sbb</code> ou directement depuis le menu
+      Local → Sacs de Sku), et correction de la disparition du menu « Local » quand Bagnon est actif.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" id="skubagnonbridge-download"
+         href="https://github.com/ZenqFR/SkuBagnonBridge/releases/latest">
+        <span id="skubagnonbridge-download-label">Télécharger</span>
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/ZenqFR/SkuBagnonBridge" target="_blank" rel="noopener">
+        Code &amp; changelog
+      </a>
+    </div>
+    <div class="meta">
+      <div>
+        <strong>Dernière mise à jour</strong>
+        <span id="skubagnonbridge-updated">—</span>
+      </div>
+      <div>
+        <strong>Téléchargements</strong>
+        <ul>
+          <li id="skubagnonbridge-downloads">—</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <h2 class="section-title">À venir</h2>
+
+  <article class="card upcoming" aria-label="D'autres addons Sku sont en préparation">
+    <h3>Prochainement</h3>
+    <p>
+      D'autres modules complémentaires pour Sku sont en préparation et seront ajoutés ici au fur et à mesure
+      de leur sortie.
+    </p>
+  </article>
+
+</main>
+
+<footer>
+  <p>
+    Page maintenue par <a href="https://github.com/ZenqFR" target="_blank" rel="noopener">ZenqFR</a>
+    · construite avec <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
+    · <a href="https://github.com/ZenqFR/sku-addons" target="_blank" rel="noopener">code source de cette page</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  function formatDate(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) +
+        " à " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    } catch (e) {
+      return iso;
+    }
+  }
+
+  function loadRelease(repo, prefix) {
+    var downloadLink = document.getElementById(prefix + "-download");
+    var downloadLabel = document.getElementById(prefix + "-download-label");
+    var updated = document.getElementById(prefix + "-updated");
+    var downloads = document.getElementById(prefix + "-downloads");
+
+    fetch("https://api.github.com/repos/" + repo + "/releases/latest")
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        var asset = (data.assets || [])[0];
+        var version = data.tag_name || "";
+
+        if (asset && asset.browser_download_url) {
+          downloadLink.href = asset.browser_download_url;
+        }
+        downloadLabel.textContent = version ? (repo.split("/")[1] + " " + version) : "Télécharger";
+        updated.textContent = data.published_at ? formatDate(data.published_at) : "—";
+
+        if (asset) {
+          downloads.textContent = asset.download_count + " pour la version " + version;
+        } else {
+          downloads.textContent = "—";
+        }
+      })
+      .catch(function () {
+        // API rate-limited or unreachable: the static fallback link to the
+        // releases page (already in the href) keeps the download working,
+        // just without the live version/count details.
+        downloadLabel.textContent = "Télécharger la dernière version";
+        updated.textContent = "voir la page des releases";
+        downloads.textContent = "voir la page des releases";
+      });
+  }
+
+  loadRelease("ZenqFR/SkuBagnonBridge", "skubagnonbridge");
+})();
+</script>
+
+</body>
+</html>
