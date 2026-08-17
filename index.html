@@ -252,6 +252,41 @@
     </div>
   </article>
 
+  <article class="card" id="skugatherroute" aria-labelledby="skugatherroute-title">
+    <h3 id="skugatherroute-title">GatherMate2 SKU Access</h3>
+    <span class="dep-pill">Dépendance : Sku · Optionnel : GatherMate2 + GatherMate2 Data</span>
+    <p class="desc">
+      Transforme les données de <strong>GatherMate2</strong> en itinéraires de minage et d'herboristerie
+      guidés à la voix, en vraie « close route » (cheminement précis, pas à pas, sur le réseau de chemins de
+      Sku) plutôt qu'un simple beacon en ligne droite. Vérifie qu'un nœud est toujours bien là avant de s'y
+      engager, passe automatiquement au suivant sinon, et propose un raccourci clavier dédié
+      (<code>Ctrl+Shift+N</code>) pour sauter un nœud à tout moment. Tout — import des données GatherMate2
+      compris — est accessible depuis le menu Local de Sku (<code>Shift+F1</code> → Route de minage / Route
+      d'herbes), sans passer par le panneau d'options de GatherMate2.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" id="skugatherroute-download"
+         href="https://github.com/ZenqFR/SkuGatherRoute/releases/latest">
+        <span id="skugatherroute-download-label">Télécharger</span>
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/ZenqFR/SkuGatherRoute" target="_blank" rel="noopener">
+        Code &amp; changelog
+      </a>
+    </div>
+    <div class="meta">
+      <div>
+        <strong>Dernière mise à jour</strong>
+        <span id="skugatherroute-updated">—</span>
+      </div>
+      <div>
+        <strong>Téléchargements</strong>
+        <ul>
+          <li id="skugatherroute-downloads">—</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
   <h2 class="section-title">À venir</h2>
 
   <article class="card upcoming" aria-label="D'autres addons Sku sont en préparation">
@@ -324,6 +359,7 @@
   }
 
   loadRelease("ZenqFR/SkuBagnonBridge", "skubagnonbridge");
+  loadRelease("ZenqFR/SkuGatherRoute", "skugatherroute");
 })();
 </script>
 
