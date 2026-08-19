@@ -287,6 +287,39 @@
     </div>
   </article>
 
+  <article class="card" id="skuquestnearby" aria-labelledby="skuquestnearby-title">
+    <h3 id="skuquestnearby-title">SkuQuestNearby</h3>
+    <span class="dep-pill">Dépendance : Sku</span>
+    <p class="desc">
+      Ajoute « Objectifs de quêtes proches » et « Quêtes à accepter à proximité » dans le menu Quêtes de Sku,
+      juste à côté de « Quêtes actuelles » et « Base de données des quêtes ». Les quêtes en cours et celles
+      prêtes à rendre sont réunies dans une seule liste triée par distance à l'objectif ou au PNJ de livraison
+      le plus proche, avec le même détail de sous-menu et la même lecture au <code>Shift+flèche du bas</code>
+      que « Quêtes actuelles ».
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" id="skuquestnearby-download"
+         href="https://github.com/ZenqFR/SkuQuestNearby/releases/latest">
+        <span id="skuquestnearby-download-label">Télécharger</span>
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/ZenqFR/SkuQuestNearby" target="_blank" rel="noopener">
+        Code &amp; changelog
+      </a>
+    </div>
+    <div class="meta">
+      <div>
+        <strong>Dernière mise à jour</strong>
+        <span id="skuquestnearby-updated">—</span>
+      </div>
+      <div>
+        <strong>Téléchargements</strong>
+        <ul>
+          <li id="skuquestnearby-downloads">—</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
   <h2 class="section-title">À venir</h2>
 
   <article class="card upcoming" aria-label="D'autres addons Sku sont en préparation">
@@ -376,6 +409,7 @@
 
   loadRelease("ZenqFR/SkuBagnonBridge", "skubagnonbridge");
   loadRelease("ZenqFR/SkuGatherRoute", "skugatherroute");
+  loadRelease("ZenqFR/SkuQuestNearby", "skuquestnearby");
 })();
 </script>
 
