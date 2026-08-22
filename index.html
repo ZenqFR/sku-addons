@@ -226,8 +226,11 @@
     <span class="dep-pill">Dépendance : Sku · Optionnel : Bagnon ou BagBrother</span>
     <p class="desc">
       Rend Sku compatible avec l'addon de sacs <strong>Bagnon / BagBrother</strong> : annonce vocale à l'ouverture
-      et à la fermeture des sacs, tri déclenchable au clavier (<code>/sbb</code> ou directement depuis le menu
-      Local → Sacs de Sku), et correction de la disparition du menu « Local » quand Bagnon est actif.
+      et à la fermeture des sacs, de la banque personnelle et de la banque de guilde, tri déclenchable au clavier
+      pour chacun séparément, et correction de la disparition du menu « Local » sur les trois. Transfert
+      bidirectionnel sacs ↔ banque en un choix depuis le menu (plus de glisser-déposer manuel), sous-menu
+      <strong>Catégorie</strong> (Objets de quête / Nourriture / Équipement) avec le détail complet d'un objet natif
+      Sku, et raccourcis clavier configurables directement depuis le menu Local.
     </p>
     <div class="actions">
       <a class="btn btn-primary" id="skubagnonbridge-download"
@@ -260,9 +263,12 @@
       guidés à la voix, en vraie « close route » (cheminement précis, pas à pas, sur le réseau de chemins de
       Sku) plutôt qu'un simple beacon en ligne droite. Vérifie qu'un nœud est toujours bien là avant de s'y
       engager, passe automatiquement au suivant sinon, et propose un raccourci clavier dédié
-      (<code>Ctrl+Shift+N</code>) pour sauter un nœud à tout moment. Tout — import des données GatherMate2
-      compris — est accessible depuis le menu Local de Sku (<code>Shift+F1</code> → Route de minage / Route
-      d'herbes), sans passer par le panneau d'options de GatherMate2.
+      (<code>Ctrl+Shift+N</code>) pour sauter un nœud à tout moment. Sélection de plusieurs types de minerai ou
+      de plante à la fois sur un même itinéraire, son de confirmation au scan manuel
+      (<code>Ctrl+Shift+R</code>), et masquage des icônes GatherMate2 sur la minicarte et/ou la grande carte.
+      Tout — import des données GatherMate2 compris — est accessible depuis le menu Local de Sku
+      (<code>Shift+F1</code> → Route de minage / Route d'herbes), sans passer par le panneau d'options de
+      GatherMate2.
     </p>
     <div class="actions">
       <a class="btn btn-primary" id="skugatherroute-download"
@@ -326,8 +332,9 @@
     <p class="desc">
       Un raccourci clavier dédié (<code>Ctrl+Shift+K</code> par défaut) qui cible directement le monstre lié à
       l'objectif de votre quête en cours — y compris les monstres qui font simplement tomber un objet
-      recherché, pas seulement les cibles à abattre directement — parmi ceux déjà visibles à proximité, sans
-      besoin de les voir pour cliquer dessus.
+      recherché, pas seulement les cibles à abattre directement — sans besoin de le voir à l'écran pour cliquer
+      dessus. La même touche + <strong>Shift</strong> cible l'ennemi le plus proche, quel qu'il soit, sans nom à
+      donner.
     </p>
     <div class="actions">
       <a class="btn btn-primary" id="skuquesttarget-download"
