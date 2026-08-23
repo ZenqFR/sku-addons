@@ -15,7 +15,13 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Thème sombre ambre/bois délibérément fixe (pas de variante claire) : identité visuelle
+     distincte assumée pour cette page, façon interface de jeu — voir les autres pages du
+     portfolio pour le thème clair/adaptatif. */
   :root {
     --bg: #16130f;
     --bg-card: #211c17;
@@ -30,17 +36,28 @@
     --pill-border: #493c2e;
     --focus: #f4c98a;
     --radius: 14px;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 22px rgba(0, 0, 0, 0.35);
   }
 
   * { box-sizing: border-box; }
 
+  html { color-scheme: dark; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
   body {
     margin: 0;
     background: var(--bg);
+    background-image: radial-gradient(circle at 15% -10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 45%);
     color: var(--text);
-    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.55;
+    font-family: "Work Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; }
 
   a { color: var(--accent-strong); }
   a:focus-visible, button:focus-visible {
@@ -58,6 +75,23 @@
     border-radius: 0 0 8px 0;
     z-index: 10;
   }
+
+  /* ---------- Barre de navigation entre mes différents projets/pages ---------- */
+  .portfolio-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 0.82rem;
+    background: var(--pill-bg);
+    border-bottom: 1px solid var(--pill-border);
+    color: var(--text-faint);
+  }
+  .portfolio-bar a { color: var(--text-dim); text-decoration: none; }
+  .portfolio-bar a:hover { color: var(--accent-strong); text-decoration: underline; }
+  .portfolio-bar [aria-current="page"] { color: var(--accent-strong); font-weight: 600; }
   .skip-link:focus { left: 0; }
 
   header {
@@ -69,7 +103,9 @@
   }
   header h1 {
     margin: 0 0 0.3em;
-    font-size: 2.1rem;
+    font-size: clamp(2.1rem, 5vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--accent-strong);
   }
   header p {
@@ -148,6 +184,12 @@
     border-radius: var(--radius);
     padding: 1.4em 1.5em;
     margin-bottom: 1.2em;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:not(.upcoming):hover, .card:not(.upcoming):focus-within {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 28px rgba(0, 0, 0, 0.4);
   }
   .card h3 {
     margin: 0 0 0.5em;
@@ -265,6 +307,16 @@
 <a class="skip-link" href="#main">
   <span data-lang="fr">Aller au contenu</span><span data-lang="en" hidden>Skip to content</span>
 </a>
+
+<nav class="portfolio-bar" aria-label="Mes autres projets">
+  <a href="https://zenqfr.github.io/">🏠 ZenqFR</a>
+  <span aria-hidden="true">·</span>
+  <span aria-current="page">Sku Addons</span>
+  <span aria-hidden="true">·</span>
+  <a href="https://zenqfr.github.io/SunHavenAccess/">Sun Haven Access</a>
+  <span aria-hidden="true">·</span>
+  <a href="https://zenqfr.github.io/petopiafr/">PetopiaFR</a>
+</nav>
 
 <header>
   <h1>Sku Addons</h1>
