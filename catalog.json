@@ -60,7 +60,7 @@
       "packages": [ { "key": "SkuQuestNearby", "type": "github-release", "repo": "ZenqFR/Sku-QuestNearby", "asset": "SkuQuestNearby-{tag}.zip", "roots": ["SkuQuestNearby"] } ]
     },
     {
-      "id": "SkuQuestTarget", "group": "zenq", "name": "SkuQuestTarget", "version": "1.2.0", "status": "stable",
+      "id": "SkuQuestTarget", "group": "zenq", "name": "SkuQuestTarget", "version": "1.2.1", "status": "stable",
       "summary": {
         "fr": "Une touche (Ctrl+K) qui cible directement la créature liée à un objectif de quête encore en cours, la plus proche d'abord, sans avoir à la voir à l'écran.",
         "en": "One key (Ctrl+K) that directly targets the creature tied to a quest objective still in progress, nearest first, without having to see it on screen."
