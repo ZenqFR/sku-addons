@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "generated": "2026-09-11",
+  "site": "https://zenqfr.github.io/sku-addons/",
+  "installer": {
+    "version": "1.0.0",
+    "zip": "https://zenqfr.github.io/sku-addons/installer/ZenqAddons-Installateur.zip",
+    "script": "https://zenqfr.github.io/sku-addons/installer/ZenqAddons.ps1",
+    "launcher": "Installateur Zenq Addons.cmd",
+    "oneLiner": "irm https://zenqfr.github.io/sku-addons/installer/ZenqAddons.ps1 | iex"
+  },
+  "flavors": {
+    "anniversary": { "folder": "_anniversary_", "product": "wow_classic_anniversary", "gameVersionPrefix": "2.5.", "label": { "fr": "Anniversary (Burning Crusade)", "en": "Anniversary (Burning Crusade)" } },
+    "era":         { "folder": "_classic_era_", "product": "wow_classic_era",         "gameVersionPrefix": "1.15.", "label": { "fr": "Classic Era", "en": "Classic Era" } },
+    "classic":     { "folder": "_classic_",     "product": "wow_classic",             "gameVersionPrefix": "5.5.",  "label": { "fr": "Classic (Mists)", "en": "Classic (Mists)" } },
+    "retail":      { "folder": "_retail_",      "product": "wow",                     "gameVersionPrefix": "12.",   "label": { "fr": "Retail", "en": "Retail" } }
+  },
+  "groups": [
+    { "id": "zenq",   "label": { "fr": "Addons Zenq pour Sku", "en": "Zenq companion addons for Sku" } },
+    { "id": "sku",    "label": { "fr": "Sku, l'addon principal", "en": "Sku, the main addon" } },
+    { "id": "quest",  "label": { "fr": "Quêtes, cartes et navigation", "en": "Quests, maps and navigation" } },
+    { "id": "combat", "label": { "fr": "Combat, donjons et raids", "en": "Combat, dungeons and raids" } },
+    { "id": "bags",   "label": { "fr": "Sacs, équipement et métiers", "en": "Bags, gear and professions" } },
+    { "id": "ah",     "label": { "fr": "Hôtel des ventes", "en": "Auction house" } },
+    { "id": "social", "label": { "fr": "Guilde, familier et divers", "en": "Guild, pet and misc" } },
+    { "id": "diag",   "label": { "fr": "Diagnostic", "en": "Diagnostics" } }
+  ],
+  "addons": [
+    {
+      "id": "SkuBagnonBridge", "group": "zenq", "name": "SkuBagnonBridge", "version": "1.3.0", "status": "stable",
+      "summary": {
+        "fr": "Rend les sacs Bagnon / BagBrother utilisables par Sku : annonces à l'ouverture, tri au clavier, transfert sacs ↔ banque et banque de guilde en un choix, catégories (quêtes, nourriture, équipement, munitions, matériaux, meilleur équipement via Pawn), partage d'objets dans le chat, et la liste « Vendable à l'HDV ».",
+        "en": "Makes Bagnon / BagBrother bags usable through Sku: spoken open/close, keyboard sort, one-pick bag ↔ bank and guild-bank transfers, categories (quest, food, gear, ammo, materials, best gear via Pawn), item sharing in chat, and the \"Sellable at the AH\" list."
+      },
+      "requires": ["Sku"], "optional": ["Bagnon", "BagBrother", "Pawn", "SkuAuctionatorBridge"],
+      "folders": ["SkuBagnonBridge"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-BagnonBridge", "changelog": "https://github.com/ZenqFR/Sku-BagnonBridge/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-BagnonBridge/issues/new" },
+      "packages": [ { "key": "SkuBagnonBridge", "type": "github-release", "repo": "ZenqFR/Sku-BagnonBridge", "asset": "SkuBagnonBridge-{tag}.zip", "roots": ["SkuBagnonBridge"] } ]
+    },
+    {
+      "id": "SkuGatherRoute", "group": "zenq", "name": "GatherMate2 SKU Access", "version": "1.0.3", "status": "stable",
+      "summary": {
+        "fr": "Itinéraires de minage et d'herboristerie guidés à la voix, construits sur les données GatherMate2 et le réseau de chemins de Sku (vraie « close route »), avec touche pour sauter un nœud (Ctrl+Maj+M), sélection multi-types et détection de blocage.",
+        "en": "Voice-guided mining and herbalism routes built on GatherMate2's data and Sku's path network (real close routes), with a skip key (Ctrl+Shift+M), multi-type selection and stuck detection."
+      },
+      "requires": ["Sku"], "optional": ["GatherMate2", "GatherMate2_Data"],
+      "folders": ["SkuGatherRoute"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-GatherRoute", "changelog": "https://github.com/ZenqFR/Sku-GatherRoute/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-GatherRoute/issues/new" },
+      "packages": [ { "key": "SkuGatherRoute", "type": "github-release", "repo": "ZenqFR/Sku-GatherRoute", "asset": "SkuGatherRoute-{tag}.zip", "roots": ["SkuGatherRoute"] } ]
+    },
+    {
+      "id": "SkuQuestNearby", "group": "zenq", "name": "SkuQuestNearby", "version": "1.2.0", "status": "stable",
+      "summary": {
+        "fr": "« Objectifs de quêtes proches » dans le menu Quêtes de Sku : une seule liste triée par distance, avec le suivi de quête, et une balise sonore continue vers l'objectif le plus proche (Ctrl+B ; Ctrl+I se tourne vers lui, Ctrl+D annonce la distance), lue dans l'état réel de Questie.",
+        "en": "\"Nearby quest objectives\" in Sku's Quests menu: one distance-sorted list with quest tracking, plus a continuous audio beacon toward the nearest objective (Ctrl+B; Ctrl+I turns to it, Ctrl+D speaks the distance), read from Questie's live state."
+      },
+      "requires": ["Sku", "Questie"], "optional": ["SkuAllyBeacon"],
+      "folders": ["SkuQuestNearby"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-QuestNearby", "changelog": "https://github.com/ZenqFR/Sku-QuestNearby/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-QuestNearby/issues/new" },
+      "packages": [ { "key": "SkuQuestNearby", "type": "github-release", "repo": "ZenqFR/Sku-QuestNearby", "asset": "SkuQuestNearby-{tag}.zip", "roots": ["SkuQuestNearby"] } ]
+    },
+    {
+      "id": "SkuQuestTarget", "group": "zenq", "name": "SkuQuestTarget", "version": "1.2.0", "status": "stable",
+      "summary": {
+        "fr": "Une touche (Ctrl+K) qui cible directement la créature liée à un objectif de quête encore en cours, la plus proche d'abord, sans avoir à la voir à l'écran.",
+        "en": "One key (Ctrl+K) that directly targets the creature tied to a quest objective still in progress, nearest first, without having to see it on screen."
+      },
+      "requires": ["Sku"], "optional": ["Questie"],
+      "folders": ["SkuQuestTarget"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-QuestTarget", "changelog": "https://github.com/ZenqFR/Sku-QuestTarget/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-QuestTarget/issues/new" },
+      "packages": [ { "key": "SkuQuestTarget", "type": "github-release", "repo": "ZenqFR/Sku-QuestTarget", "asset": "SkuQuestTarget-{tag}.zip", "roots": ["SkuQuestTarget"] } ]
+    },
+    {
+      "id": "SkuAllyBeacon", "group": "zenq", "name": "SkuAllyBeacon", "version": "1.2.1", "status": "beta",
+      "summary": {
+        "fr": "Balise sonore continue sur un membre du groupe ciblé (Ctrl+P), ou sur un PNJ d'escorte, avec alertes quand il est attaqué, bas en vie ou mort ; en instance, suivi par paliers de distance.",
+        "en": "Continuous audio beacon on a targeted group member (Ctrl+P), or an escort NPC, with alerts when they are attacked, low on health or dead; distance bands inside instances."
+      },
+      "requires": ["Sku"], "optional": ["SkuQuestNearby"],
+      "folders": ["SkuAllyBeacon"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-AllyBeacon", "changelog": "https://github.com/ZenqFR/Sku-AllyBeacon/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-AllyBeacon/issues/new" },
+      "packages": [ { "key": "SkuAllyBeacon", "type": "github-release", "repo": "ZenqFR/Sku-AllyBeacon", "asset": "SkuAllyBeacon-{tag}.zip", "roots": ["SkuAllyBeacon"] } ]
+    },
+    {
+      "id": "SkuAuctionatorBridge", "group": "zenq", "name": "SkuAuctionatorBridge", "version": "1.3.0", "status": "stable",
+      "summary": {
+        "fr": "L'onglet Ventes d'Auctionator entièrement à l'oreille depuis le menu HDV de Sku : prix mémorisé, piles, durée, dépôt, concurrents, annulation ; « HDV : prêt à vendre » (Maj+F1) et une tournée de vente en une passe avec garde-fou sur le prix.",
+        "en": "Auctionator's Selling tab entirely by ear from Sku's AH menu: remembered price, stacks, duration, deposit, competitors, cancelling; \"AH: ready to sell\" (Shift+F1) and a one-go selling run with a price guard."
+      },
+      "requires": ["Sku", "Auctionator"], "optional": [],
+      "folders": ["SkuAuctionatorBridge"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-AuctionatorBridge", "changelog": "https://github.com/ZenqFR/Sku-AuctionatorBridge/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-AuctionatorBridge/issues/new" },
+      "packages": [ { "key": "SkuAuctionatorBridge", "type": "github-release", "repo": "ZenqFR/Sku-AuctionatorBridge", "asset": "SkuAuctionatorBridge-{tag}.zip", "roots": ["SkuAuctionatorBridge"] } ]
+    },
+    {
+      "id": "SkuCraftStock", "group": "zenq", "name": "SkuCraftStock", "version": "1.1.0", "status": "beta",
+      "summary": {
+        "fr": "Dans les menus de métier de Sku, dit pour chaque recette si les matériaux sont là, en comptant la banque et la banque de guilde (cache Bagnon) ; file de fabrication, retrait des matériaux à la banque, partage de recette dans le chat.",
+        "en": "In Sku's profession menus, says for every recipe whether the materials are there, counting the bank and guild bank (Bagnon cache); craft queue, material withdrawal at the bank, recipe sharing in chat."
+      },
+      "requires": ["Sku"], "optional": ["Bagnon", "BagBrother", "SkuBagnonBridge"],
+      "folders": ["SkuCraftStock"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-CraftStock", "changelog": "https://github.com/ZenqFR/Sku-CraftStock/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-CraftStock/issues/new" },
+      "packages": [ { "key": "SkuCraftStock", "type": "github-release", "repo": "ZenqFR/Sku-CraftStock", "asset": "SkuCraftStock-{tag}.zip", "roots": ["SkuCraftStock"] } ]
+    },
+    {
+      "id": "SkuDive", "group": "zenq", "name": "SkuDive", "version": "1.0.0", "status": "beta",
+      "summary": {
+        "fr": "Plonger au clavier avec Sku 43.3 : une touche pour descendre sous l'eau (Suppr), une touche pour le verrou d'inclinaison de la caméra (Inser), rappel des touches à la première baignade.",
+        "en": "Diving by keyboard with Sku 43.3: a key to swim down (Delete), a key for the camera pitch lock (Insert), key reminder on the first swim."
+      },
+      "requires": ["Sku"], "optional": [],
+      "folders": ["SkuDive"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-Dive", "changelog": "https://github.com/ZenqFR/Sku-Dive/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-Dive/issues/new" },
+      "packages": [ { "key": "SkuDive", "type": "github-release", "repo": "ZenqFR/Sku-Dive", "asset": "SkuDive-{tag}.zip", "roots": ["SkuDive"] } ]
+    },
+    {
+      "id": "SkuHunterAlerts", "group": "zenq", "name": "SkuHunterAlerts", "version": "1.2.1", "status": "beta",
+      "summary": {
+        "fr": "Alertes de combat parlées pour chasseur : familier bas en vie, mort ou malheureux, toi bas en vie, munitions, cible en incantation (interruptible ou non) ; et « Salve sur la cible » sans souris (Alt+S vise, Alt+L lance), en cours de mise au point.",
+        "en": "Spoken combat alerts for hunters: pet low, dead or unhappy, you low, ammunition, target casting (interruptible or not); plus \"Volley on the target\" without a mouse (Alt+S aims, Alt+L casts), still being tuned."
+      },
+      "requires": ["Sku"], "optional": [],
+      "folders": ["SkuHunterAlerts"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-HunterAlerts", "changelog": "https://github.com/ZenqFR/Sku-HunterAlerts/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-HunterAlerts/issues/new" },
+      "packages": [ { "key": "SkuHunterAlerts", "type": "github-release", "repo": "ZenqFR/Sku-HunterAlerts", "asset": "SkuHunterAlerts-{tag}.zip", "roots": ["SkuHunterAlerts"] } ]
+    },
+    {
+      "id": "SkuQuestJournal", "group": "zenq", "name": "SkuQuestJournal", "version": "1.1.0", "status": "beta",
+      "summary": {
+        "fr": "Registre de toutes les quêtes rendues (heure, niveau, zone, XP, argent) et journal de quêtes en cours par zone avec états et objectifs, chacun copiable en texte (Ctrl+C) depuis Maj+F1.",
+        "en": "Record of every quest turned in (time, level, zone, XP, money) and the current quest log by zone with states and objectives, each copyable as text (Ctrl+C) from Shift+F1."
+      },
+      "requires": ["Sku"], "optional": ["Questie"],
+      "folders": ["SkuQuestJournal"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-QuestJournal", "changelog": "https://github.com/ZenqFR/Sku-QuestJournal/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-QuestJournal/issues/new" },
+      "packages": [ { "key": "SkuQuestJournal", "type": "github-release", "repo": "ZenqFR/Sku-QuestJournal", "asset": "SkuQuestJournal-{tag}.zip", "roots": ["SkuQuestJournal"] } ]
+    },
+    {
+      "id": "SkuTrainerNews", "group": "zenq", "name": "SkuTrainerNews", "version": "1.0.0", "status": "beta",
+      "summary": {
+        "fr": "« Quoi de neuf chez mon maître ? » : mémorise chaque visite de maître de classe ou de métier, annonce au passage de niveau ce qui devient apprenable et son coût, et rappelle un maître proche qui a quelque chose pour toi.",
+        "en": "\"What's new at my trainer?\": remembers every class or profession trainer visit, announces at level-up what became learnable and its cost, and reminds you of a nearby trainer who has something for you."
+      },
+      "requires": ["Sku"], "optional": [],
+      "folders": ["SkuTrainerNews"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-TrainerNews", "changelog": "https://github.com/ZenqFR/Sku-TrainerNews/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-TrainerNews/issues/new" },
+      "packages": [ { "key": "SkuTrainerNews", "type": "github-release", "repo": "ZenqFR/Sku-TrainerNews", "asset": "SkuTrainerNews-{tag}.zip", "roots": ["SkuTrainerNews"] } ]
+    },
+    {
+      "id": "SkuZoneWaypoints", "group": "zenq", "name": "SkuZoneWaypoints", "version": "1.0.0", "status": "beta",
+      "summary": {
+        "fr": "« Points de zone » : les points de passage de Sku, les sorties de la zone, les utilitaires (vol, aubergiste, banque, HDV, écuries, réparation…) et les maîtres et fournisseurs utiles à ton personnage, triés par distance, filtrables en tapant, avec « Route vers » sur les chemins de Sku.",
+        "en": "\"Zone points\": Sku's waypoints, the zone's exits, utilities (flight, innkeeper, bank, AH, stables, repair…) and the trainers and suppliers relevant to your character, sorted by distance, filterable by typing, with \"Route to\" on Sku's paths."
+      },
+      "requires": ["Sku"], "optional": [],
+      "folders": ["SkuZoneWaypoints"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/Sku-ZoneWaypoints", "changelog": "https://github.com/ZenqFR/Sku-ZoneWaypoints/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-ZoneWaypoints/issues/new" },
+      "packages": [ { "key": "SkuZoneWaypoints", "type": "github-release", "repo": "ZenqFR/Sku-ZoneWaypoints", "asset": "SkuZoneWaypoints-{tag}.zip", "roots": ["SkuZoneWaypoints"] } ]
+    },
+    {
+      "id": "SkinningInfo", "group": "zenq", "name": "SkinningInfo", "version": "1.0.0", "status": "beta",
+      "summary": {
+        "fr": "Dans l'infobulle d'une créature : dépeçable ou non, compétence requise face à la tienne, cuir, peau ou écailles probables. Autonome ; avec Sku, lu au changement de cible et sur une touche.",
+        "en": "In a creature's tooltip: skinnable or not, required skill against yours, likely leather, hide or scales. Standalone; with Sku, spoken on target change and on a key."
+      },
+      "requires": [], "optional": ["Sku"],
+      "folders": ["SkinningInfo"], "defaultChecked": true,
+      "links": { "home": "https://github.com/ZenqFR/SkinningInfo", "changelog": "https://github.com/ZenqFR/SkinningInfo/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/SkinningInfo/issues/new" },
+      "packages": [ { "key": "SkinningInfo", "type": "github-release", "repo": "ZenqFR/SkinningInfo", "asset": "SkinningInfo-{tag}.zip", "roots": ["SkinningInfo"] } ]
+    },
+    {
+      "id": "SkuVoiceProbe", "group": "diag", "name": "SkuVoiceProbe", "version": "1.0.0", "status": "beta",
+      "summary": {
+        "fr": "Sonde de diagnostic : trace le parcours de chaque phrase que Sku veut dire (demandée, transmise, commencée, finie, coupée) pour comprendre pourquoi le lecteur d'écran se tait. À installer seulement pour enquêter.",
+        "en": "Diagnostic probe: traces the path of every line Sku wants to say (asked, handed over, started, finished, cut) to understand why the screen reader goes silent. Install only to investigate."
+      },
+      "requires": ["Sku"], "optional": [],
+      "folders": ["SkuVoiceProbe"], "defaultChecked": false,
+      "links": { "home": "https://github.com/ZenqFR/Sku-VoiceProbe", "changelog": "https://github.com/ZenqFR/Sku-VoiceProbe/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-VoiceProbe/issues/new" },
+      "packages": [ { "key": "SkuVoiceProbe", "type": "github-release", "repo": "ZenqFR/Sku-VoiceProbe", "asset": "SkuVoiceProbe-{tag}.zip", "roots": ["SkuVoiceProbe"] } ]
+    },
+
+    {
+      "id": "Sku", "group": "sku", "name": "Sku", "status": "stable",
+      "summary": {
+        "fr": "L'addon d'accessibilité lui-même (Sku75). Installé et mis à jour par son installateur officiel, qui gère aussi les sons de balise, les données audio, les balises personnalisées et l'outil de connexion : l'installateur Zenq le télécharge et le lance pour toi.",
+        "en": "The accessibility addon itself (Sku75). Installed and updated by its official installer, which also handles the beacon sounds, audio data, custom beacons and the login tool: the Zenq installer downloads and starts it for you."
+      },
+      "requires": [], "optional": [],
+      "folders": ["Sku"], "defaultChecked": true,
+      "links": { "home": "https://sku75.github.io/Sku-WoW-Addon-TBC/", "changelog": "https://github.com/Sku75/Sku-WoW-Addon-TBC/releases", "issues": "https://github.com/Sku75/Sku-WoW-Addon-TBC/issues" },
+      "packages": [ { "key": "Sku", "type": "sku-installer", "repo": "Sku75/Sku-WoW-Addon-TBC", "asset": "SkuInstaller.exe", "metadata": "installer-version.txt", "roots": ["Sku"] } ]
+    },
+    {
+      "id": "SkuPacks", "group": "sku", "name": "Sku : sons, données audio et balises", "status": "stable", "infoOnly": true,
+      "summary": {
+        "fr": "SkuBeaconSoundsets, SkuAudioData, SkuCustomBeaconsEssential et SkuCustomBeaconsAdditional sont installés et mis à jour par l'installateur officiel de Sku (ligne « Sku » ci-dessus).",
+        "en": "SkuBeaconSoundsets, SkuAudioData, SkuCustomBeaconsEssential and SkuCustomBeaconsAdditional are installed and updated by the official Sku installer (the \"Sku\" row above)."
+      },
+      "requires": ["Sku"], "optional": [],
+      "folders": ["SkuBeaconSoundsets", "SkuCustomBeaconsEssential", "SkuCustomBeaconsAdditional", "SkuAudioData_en"], "defaultChecked": false,
+      "links": { "home": "https://sku75.github.io/Sku-WoW-Addon-TBC/" },
+      "packages": []
+    },
+
+    {
+      "id": "Questie", "group": "quest", "name": "Questie", "status": "stable",
+      "summary": { "fr": "Base de données et suivi de quêtes ; source de plusieurs addons Zenq (objectifs proches, cible de quête, journal).", "en": "Quest database and tracker; the source several Zenq addons read (nearby objectives, quest target, journal)." },
+      "requires": [], "optional": [],
+      "folders": ["Questie"], "defaultChecked": true,
+      "links": { "home": "https://github.com/Questie/Questie", "curseforge": "https://www.curseforge.com/wow/addons/questie" },
+      "packages": [ { "key": "Questie", "type": "github-release", "repo": "Questie/Questie", "asset": "Questie-{tag}.zip", "roots": ["Questie"], "curseforge": 334372 } ]
+    },
+    {
+      "id": "TomTom", "group": "quest", "name": "TomTom", "status": "stable",
+      "summary": { "fr": "Points de passage et flèche de navigation.", "en": "Waypoints and navigation arrow." },
+      "requires": [], "optional": [],
+      "folders": ["TomTom"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/tomtom" },
+      "packages": [ { "key": "TomTom", "type": "curseforge", "project": 18808, "roots": ["TomTom"] } ]
+    },
+    {
+      "id": "GatherMate2", "group": "quest", "name": "GatherMate2 (Classic)", "status": "stable",
+      "summary": { "fr": "Enregistre les nœuds de minerai, d'herbes, de pêche et de trésors ; nécessaire à GatherMate2 SKU Access.", "en": "Records ore, herb, fishing and treasure nodes; needed by GatherMate2 SKU Access." },
+      "requires": [], "optional": [],
+      "folders": ["GatherMate2"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/gathermate2-classic" },
+      "packages": [ { "key": "GatherMate2", "type": "curseforge", "project": 405809, "roots": ["GatherMate2"] } ]
+    },
+    {
+      "id": "GatherMate2_Data", "group": "quest", "name": "GatherMate2 Data (Wowhead, Classic)", "status": "stable",
+      "summary": { "fr": "Données de nœuds pré-remplies pour GatherMate2, importées depuis Wowhead.", "en": "Pre-filled node data for GatherMate2, imported from Wowhead." },
+      "requires": ["GatherMate2"], "optional": [],
+      "folders": ["GatherMate2_Data"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/gathermate2-data-wowhead-classic" },
+      "packages": [ { "key": "GatherMate2_Data", "type": "curseforge", "project": 350035, "roots": ["GatherMate2_Data"] } ]
+    },
+    {
+      "id": "AtlasLootClassic", "group": "quest", "name": "AtlasLootClassic (Anniversary)", "status": "stable",
+      "summary": { "fr": "Tables de butin des donjons, raids, factions, PvP, métiers et collections.", "en": "Loot tables for dungeons, raids, factions, PvP, crafting and collections." },
+      "requires": [], "optional": [],
+      "folders": ["AtlasLootClassic", "AtlasLootClassic_Data", "AtlasLootClassic_DungeonsAndRaids", "AtlasLootClassic_Options", "AtlasLootClassic_Crafting", "AtlasLootClassic_Collections", "AtlasLootClassic_Factions", "AtlasLootClassic_PvP", "AtlasLootClassic_BiS"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/atlaslootclassic-anniversary" },
+      "packages": [ { "key": "AtlasLootClassic", "type": "curseforge", "project": 1270310, "roots": ["AtlasLootClassic"], "rootPrefix": "AtlasLootClassic" } ]
+    },
+
+    {
+      "id": "DBM", "group": "combat", "name": "Deadly Boss Mods (DBM)", "status": "stable",
+      "summary": { "fr": "Alertes de boss : le cœur, les donjons, les raids Burning Crusade et les raids Vanilla, en un seul choix (quatre paquets).", "en": "Boss alerts: the core, dungeons, Burning Crusade raids and Vanilla raids, in one pick (four packages)." },
+      "requires": [], "optional": [],
+      "folders": ["DBM-Core", "DBM-GUI", "DBM-StatusBarTimers", "DBM-Party-BC", "DBM-Party-Vanilla", "DBM-Raids-BC", "DBM-Raids-Vanilla"], "defaultChecked": true,
+      "links": { "home": "https://deadlybossmods.com", "curseforge": "https://www.curseforge.com/wow/addons/deadly-boss-mods" },
+      "packages": [
+        { "key": "DBM-Core",     "type": "github-release", "repo": "DeadlyBossMods/DeadlyBossMods",    "asset": "DBM-Core-{tag}.zip",        "roots": ["DBM-Core", "DBM-GUI", "DBM-StatusBarTimers"], "rootPrefix": "DBM-", "curseforge": 3358 },
+        { "key": "DBM-Dungeons", "type": "github-release", "repo": "DeadlyBossMods/DBM-Dungeons",      "asset": "DBM-Dungeons-{tag}.zip",    "roots": ["DBM-Party-BC", "DBM-Party-Vanilla"], "rootPrefix": "DBM-", "curseforge": 314994 },
+        { "key": "DBM-Raids-BC", "type": "github-release", "repo": "DeadlyBossMods/DBM-BurningCrusade", "asset": "DBM-Raids-BC-{tag}.zip",    "roots": ["DBM-Raids-BC"], "rootPrefix": "DBM-", "curseforge": 1016966, "flavors": ["anniversary"] },
+        { "key": "DBM-Vanilla",  "type": "github-release", "repo": "DeadlyBossMods/DBM-Vanilla",       "asset": "DBM-Vanilla_SoD-{tag}.zip", "roots": ["DBM-Raids-Vanilla"], "rootPrefix": "DBM-", "curseforge": 16442 }
+      ]
+    },
+    {
+      "id": "Details", "group": "combat", "name": "Details! Damage Meter", "status": "stable",
+      "summary": { "fr": "Compteur de dégâts, de soins et de menace, avec ses greffons.", "en": "Damage, healing and threat meter, with its plugins." },
+      "requires": [], "optional": [],
+      "folders": ["Details", "Details_DataStorage", "Details_TinyThreat", "Details_EncounterDetails", "Details_RaidCheck", "Details_Vanguard", "Details_Streamer", "Details_Compare2"], "defaultChecked": true,
+      "links": { "home": "https://github.com/Tercioo/Details-Damage-Meter", "curseforge": "https://www.curseforge.com/wow/addons/details" },
+      "packages": [ { "key": "Details", "type": "curseforge", "project": 61284, "roots": ["Details"], "rootPrefix": "Details" } ]
+    },
+    {
+      "id": "Pawn", "group": "bags", "name": "Pawn", "status": "stable",
+      "summary": { "fr": "Dit si un objet est une amélioration pour ton personnage ; utilisé par SkuBagnonBridge pour la catégorie « Meilleur équipement ».", "en": "Tells whether an item is an upgrade for your character; used by SkuBagnonBridge for the \"Best gear\" category." },
+      "requires": [], "optional": [],
+      "folders": ["Pawn"], "defaultChecked": true,
+      "links": { "home": "https://github.com/VgerMods/Pawn", "curseforge": "https://www.curseforge.com/wow/addons/pawn" },
+      "packages": [ { "key": "Pawn", "type": "github-release", "repo": "VgerMods/Pawn", "asset": "{tag}-BurningCrusade.zip", "roots": ["Pawn"], "curseforge": 4646, "curseforgeFileContains": "-BurningCrusade" } ]
+    },
+    {
+      "id": "Bagnon", "group": "bags", "name": "Bagnon (avec BagBrother)", "status": "stable",
+      "summary": { "fr": "Sacs, banque et banque de guilde en une fenêtre, avec le cache hors ligne BagBrother ; base de SkuBagnonBridge et SkuCraftStock.", "en": "Bags, bank and guild bank in one window, with the BagBrother offline cache; the base of SkuBagnonBridge and SkuCraftStock." },
+      "requires": [], "optional": [],
+      "folders": ["Bagnon", "Bagnon_Config", "Bagnon_Bank", "Bagnon_GuildBank", "BagBrother"], "defaultChecked": true,
+      "links": { "home": "https://github.com/Jaliborc/Bagnon", "curseforge": "https://www.curseforge.com/wow/addons/bagnon" },
+      "packages": [ { "key": "Bagnon", "type": "curseforge", "project": 1592, "roots": ["Bagnon"], "rootPrefix": "Bagnon", "extraRoots": ["BagBrother"] } ]
+    },
+
+    {
+      "id": "Auctionator", "group": "ah", "name": "Auctionator", "status": "stable",
+      "summary": { "fr": "Hôtel des ventes simplifié : achat, vente, listes de courses, prix mémorisés ; requis par SkuAuctionatorBridge.", "en": "Simplified auction house: buying, selling, shopping lists, remembered prices; required by SkuAuctionatorBridge." },
+      "requires": [], "optional": [],
+      "folders": ["Auctionator"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/auctionator" },
+      "packages": [ { "key": "Auctionator", "type": "curseforge", "project": 6124, "roots": ["Auctionator"] } ]
+    },
+    {
+      "id": "Auctionator_Database", "group": "ah", "name": "Auctionator Database", "status": "stable",
+      "summary": { "fr": "Base de prix pré-remplie pour Auctionator.", "en": "Pre-filled price database for Auctionator." },
+      "requires": ["Auctionator"], "optional": [],
+      "folders": ["Auctionator_Database"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/auctionator-database" },
+      "packages": [ { "key": "Auctionator_Database", "type": "curseforge", "project": 1464178, "roots": ["Auctionator_Database"] } ]
+    },
+    {
+      "id": "Auctionator_ShoppingList", "group": "ah", "name": "Auctionator ShoppingList", "status": "stable",
+      "summary": { "fr": "Listes de courses supplémentaires pour Auctionator.", "en": "Extra shopping lists for Auctionator." },
+      "requires": ["Auctionator"], "optional": [],
+      "folders": ["Auctionator_ShoppingList"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/auctionator-shoppinglist" },
+      "packages": [ { "key": "Auctionator_ShoppingList", "type": "curseforge", "project": 1474480, "roots": ["Auctionator_ShoppingList"] } ]
+    },
+    {
+      "id": "Auctionator_Sound", "group": "ah", "name": "Auctionator Sound", "status": "stable",
+      "summary": { "fr": "Un son quand une vente aboutit.", "en": "A sound when a sale goes through." },
+      "requires": ["Auctionator"], "optional": [],
+      "folders": ["Auctionator_Sound"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/auctionator-sound" },
+      "packages": [ { "key": "Auctionator_Sound", "type": "curseforge", "project": 1525082, "roots": ["Auctionator_Sound"] } ]
+    },
+    {
+      "id": "AuctionVendorScan", "group": "ah", "name": "Auction Vendor Scan", "status": "stable",
+      "summary": { "fr": "Compagnon d'Auctionator : compare les prix de l'hôtel des ventes aux prix vendeur.", "en": "Auctionator companion: compares auction prices with vendor prices." },
+      "requires": ["Auctionator"], "optional": [],
+      "folders": ["AuctionVendorScan"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/auctionator-compainion" },
+      "packages": [ { "key": "AuctionVendorScan", "type": "curseforge", "project": 1502887, "roots": ["AuctionVendorScan"] } ]
+    },
+    {
+      "id": "Auctioneer", "group": "ah", "name": "Auctioneer Suite", "status": "stable",
+      "summary": { "fr": "La suite Auctioneer : statistiques de prix, BeanCounter, Enchantrix, Informant et ses bibliothèques (Stubby, SlideBar, Swatter).", "en": "The Auctioneer suite: price statistics, BeanCounter, Enchantrix, Informant and its libraries (Stubby, SlideBar, Swatter)." },
+      "requires": [], "optional": [],
+      "folders": ["Auc-Advanced", "Auc-Filter-Basic", "Auc-ScanData", "Auc-Stat-Histogram", "Auc-Stat-iLevel", "Auc-Stat-Purchased", "Auc-Stat-Simple", "Auc-Stat-StdDev", "Auc-Util-FixAH", "BeanCounter", "Enchantrix", "Enchantrix-Barker", "Informant", "SlideBar", "Stubby", "!Swatter"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/auctioneer" },
+      "packages": [ { "key": "Auctioneer", "type": "curseforge", "project": 89, "roots": ["Auc-Advanced"], "rootPrefix": "Auc-", "extraRoots": ["BeanCounter", "Enchantrix", "Enchantrix-Barker", "Informant", "SlideBar", "Stubby", "!Swatter"] } ]
+    },
+
+    {
+      "id": "HearKitty", "group": "social", "name": "Hear Kitty", "status": "stable",
+      "summary": { "fr": "Un son musical pour chaque point de combo ou charge accumulée.", "en": "A musical note for every combo point or charge built up." },
+      "requires": [], "optional": [],
+      "folders": ["HearKitty"], "defaultChecked": true,
+      "links": { "home": "https://github.com/VgerMods/HearKitty", "curseforge": "https://www.curseforge.com/wow/addons/hear-kitty" },
+      "packages": [ { "key": "HearKitty", "type": "github-release", "repo": "VgerMods/HearKitty", "asset": "{tag}-BurningCrusade.zip", "roots": ["HearKitty"], "curseforge": 3320, "curseforgeFileContains": "-BurningCrusade" } ]
+    },
+    {
+      "id": "LazyFeedPet", "group": "social", "name": "Lazy Feed Pet (Anniversary)", "status": "stable",
+      "summary": { "fr": "Nourrit le familier du chasseur en une touche avec la bonne nourriture.", "en": "Feeds the hunter pet in one key with the right food." },
+      "requires": [], "optional": [],
+      "folders": ["LazyFeedPet"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/lazy-feed-pet-anniversary" },
+      "packages": [ { "key": "LazyFeedPet", "type": "curseforge", "project": 1454185, "roots": ["LazyFeedPet"] } ]
+    },
+    {
+      "id": "EasyGuildInvite", "group": "social", "name": "EasyGuildInvite", "status": "stable",
+      "summary": { "fr": "Recrutement de guilde : invitations et messages automatiques.", "en": "Guild recruitment: automatic invitations and messages." },
+      "requires": [], "optional": [],
+      "folders": ["EasyGuildInvite"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/easyguildinvite" },
+      "packages": [ { "key": "EasyGuildInvite", "type": "curseforge", "project": 1304561, "roots": ["EasyGuildInvite"] } ]
+    },
+    {
+      "id": "SmartGuildInviter", "group": "social", "name": "Smart Guild Inviter", "status": "stable",
+      "summary": { "fr": "Invitations de guilde intelligentes par mot-clé et par liste.", "en": "Smart guild invitations by keyword and by list." },
+      "requires": [], "optional": [],
+      "folders": ["SmartGuildInviter"], "defaultChecked": true,
+      "links": { "curseforge": "https://www.curseforge.com/wow/addons/smart-guild-invite" },
+      "packages": [ { "key": "SmartGuildInviter", "type": "curseforge", "project": 1323452, "roots": ["SmartGuildInviter"] } ]
+    }
+  ]
+}

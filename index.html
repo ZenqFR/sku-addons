@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sku Addons — ZenqFR</title>
-<meta name="description" content="Modules complémentaires d'accessibilité pour Sku, l'addon d'accessibilité pour aveugles et malvoyants sur World of Warcraft: The Burning Crusade Classic — SkuBagnonBridge, GatherMate2 SKU Access, SkuQuestNearby, SkuQuestTarget, SkuBeastLore.">
+<meta name="description" content="Addons d'accessibilité pour Sku (World of Warcraft Classic Anniversary, Burning Crusade) et un installateur accessible qui installe et met à jour Sku, les addons Zenq et les addons tiers courants : Questie, DBM, Details, Auctionator, Bagnon, GatherMate2, Pawn, TomTom…">
 <link rel="canonical" href="https://zenqfr.github.io/sku-addons/">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sku Addons — ZenqFR">
-<meta property="og:description" content="Modules complémentaires d'accessibilité pour Sku (WoW: The Burning Crusade Classic).">
+<meta property="og:description" content="Addons d'accessibilité pour Sku (WoW Classic Anniversary) et installateur accessible pour tous les addons.">
 <meta property="og:url" content="https://zenqfr.github.io/sku-addons/">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,20 +33,18 @@
     --accent-strong: #f0b877;
     --accent-text: #1c1712;
     --pill-bg: #2a231c;
-    --pill-border: #493c2e;
-    --focus: #f4c98a;
+    --pill-border: #3f352a;
+    --focus: #ffd58a;
+    --warn: #f0c36a;
     --radius: 14px;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 22px rgba(0, 0, 0, 0.35);
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.35);
   }
-
   * { box-sizing: border-box; }
-
-  html { color-scheme: dark; }
-
+  html { color-scheme: dark; scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    html { scroll-behavior: auto; }
   }
-
   body {
     margin: 0;
     background: var(--bg);
@@ -56,251 +54,105 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-
-  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; }
-
+  h1, h2, h3, h4 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; }
   a { color: var(--accent-strong); }
-  a:focus-visible, button:focus-visible {
+  a:focus-visible, button:focus-visible, summary:focus-visible {
     outline: 3px solid var(--focus);
     outline-offset: 2px;
   }
-
   .skip-link {
-    position: absolute;
-    left: -999px;
-    top: 0;
-    background: var(--accent);
-    color: var(--accent-text);
-    padding: 0.6em 1em;
-    border-radius: 0 0 8px 0;
-    z-index: 10;
+    position: absolute; left: -999px; top: 0;
+    background: var(--accent); color: var(--accent-text);
+    padding: 0.6em 1em; border-radius: 0 0 8px 0; z-index: 10;
   }
+  .skip-link:focus { left: 0; }
 
   /* ---------- Barre de navigation entre mes différents projets/pages ---------- */
   .portfolio-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 0.82rem;
-    background: var(--pill-bg);
-    border-bottom: 1px solid var(--pill-border);
-    color: var(--text-faint);
+    display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0.5em;
+    padding: 0.5em 1em; font-size: 0.82rem;
+    background: var(--pill-bg); border-bottom: 1px solid var(--pill-border); color: var(--text-faint);
   }
   .portfolio-bar a { color: var(--text-dim); text-decoration: none; }
   .portfolio-bar a:hover { color: var(--accent-strong); text-decoration: underline; }
   .portfolio-bar [aria-current="page"] { color: var(--accent-strong); font-weight: 600; }
-  .skip-link:focus { left: 0; }
 
-  header {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 3em 1.5em 1.5em;
-    text-align: center;
-    position: relative;
-  }
-  header h1 {
-    margin: 0 0 0.3em;
-    font-size: clamp(2.1rem, 5vw, 2.8rem);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--accent-strong);
-  }
-  header p {
-    margin: 0;
-    color: var(--text-dim);
-  }
+  header { max-width: 800px; margin: 0 auto; padding: 3em 1.5em 1em; text-align: center; }
+  header h1 { margin: 0 0 0.3em; font-size: clamp(2.1rem, 5vw, 2.8rem); font-weight: 600; letter-spacing: -0.01em; color: var(--accent-strong); }
+  header p { margin: 0; color: var(--text-dim); }
 
-  .lang-switch {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 1em 1.5em 0;
-    text-align: right;
-  }
+  .topbar { max-width: 800px; margin: 0 auto; padding: 0.6em 1.5em 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6em; }
+  .topbar nav a { margin-right: 1em; font-size: 0.9rem; }
   .lang-switch button {
-    background: transparent;
-    border: 1px solid var(--pill-border);
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    padding: 0.4em 0.9em;
-    border-radius: 999px;
-    cursor: pointer;
+    background: transparent; border: 1px solid var(--pill-border); color: var(--text-dim);
+    font-size: 0.85rem; padding: 0.4em 0.9em; border-radius: 999px; cursor: pointer; font-family: inherit;
   }
   .lang-switch button:hover { border-color: var(--accent); color: var(--accent-strong); }
 
-  .intro {
-    max-width: 760px;
-    margin: 0 auto 2em;
-    padding: 0 1.5em;
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 0.95rem;
-  }
-  .intro code {
-    background: var(--pill-bg);
-    border: 1px solid var(--pill-border);
-    border-radius: 6px;
-    padding: 0.1em 0.4em;
-    font-size: 0.9em;
-  }
-
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 1.5em 4em;
-  }
-
+  main { max-width: 800px; margin: 0 auto; padding: 0 1.5em 4em; }
   h2.section-title {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-faint);
-    border-bottom: 1px solid var(--bg-card-border);
-    padding-bottom: 0.5em;
-    margin: 2.5em 0 1.2em;
+    font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint);
+    border-bottom: 1px solid var(--bg-card-border); padding-bottom: 0.5em; margin: 2.6em 0 1.2em;
   }
-  h2.section-title:first-of-type { margin-top: 0; }
-
-  .install-steps {
-    margin: 0 0 2em;
-    padding-left: 1.4em;
-    color: var(--text-dim);
-  }
-  .install-steps li { margin-bottom: 0.5em; }
-  .install-steps code {
-    background: var(--pill-bg);
-    border: 1px solid var(--pill-border);
-    border-radius: 6px;
-    padding: 0.1em 0.4em;
-    font-size: 0.9em;
-    color: var(--text);
-  }
+  h2.section-title:first-of-type { margin-top: 1.4em; }
+  .section-intro { color: var(--text-dim); margin: -0.4em 0 1.2em; font-size: 0.95rem; }
 
   .card {
-    background: var(--bg-card);
-    border: 1px solid var(--bg-card-border);
-    border-radius: var(--radius);
-    padding: 1.4em 1.5em;
-    margin-bottom: 1.2em;
-    box-shadow: var(--shadow);
+    background: var(--bg-card); border: 1px solid var(--bg-card-border); border-radius: var(--radius);
+    padding: 1.4em 1.5em; margin-bottom: 1.2em; box-shadow: var(--shadow);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .card:not(.upcoming):hover, .card:not(.upcoming):focus-within {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 28px rgba(0, 0, 0, 0.4);
+  .card:hover, .card:focus-within { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,.4), 0 12px 28px rgba(0,0,0,.4); }
+  .card h3 { margin: 0 0 0.5em; font-size: 1.25rem; color: var(--accent-strong); display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
+  .card.featured { border-color: color-mix(in srgb, var(--accent) 55%, var(--bg-card-border)); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 9%, var(--bg-card)), var(--bg-card)); }
+  .card.featured h3 { font-size: 1.5rem; }
+  .pill {
+    display: inline-block; background: var(--pill-bg); border: 1px solid var(--pill-border); color: var(--text-dim);
+    font-size: 0.76rem; padding: 0.2em 0.7em; border-radius: 999px; margin: 0 0.4em 0.7em 0; font-family: "Work Sans", sans-serif; font-weight: 500;
   }
-  .card h3 {
-    margin: 0 0 0.5em;
-    font-size: 1.25rem;
-    color: var(--accent-strong);
-  }
-  .dep-pill {
-    display: inline-block;
-    background: var(--pill-bg);
-    border: 1px solid var(--pill-border);
-    color: var(--text-dim);
-    font-size: 0.78rem;
-    padding: 0.25em 0.7em;
-    border-radius: 999px;
-    margin-bottom: 0.9em;
-  }
-  .card p.desc {
-    margin: 0 0 1.1em;
-    color: var(--text);
-  }
-  .card p.whatsnew {
-    margin: 0 0 1.1em;
-    padding: 0.7em 0.9em;
-    background: var(--pill-bg);
-    border: 1px solid var(--pill-border);
-    border-radius: 10px;
-    font-size: 0.88rem;
-    color: var(--text-dim);
-  }
-  .card p.whatsnew strong { color: var(--accent-strong); }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7em;
-    margin-bottom: 1em;
-  }
+  .pill.beta { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, var(--pill-border)); }
+  .card p.desc { margin: 0 0 1.1em; color: var(--text); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.7em; margin-bottom: 1em; }
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4em;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.6em 1.1em;
-    border-radius: 999px;
-    font-size: 0.92rem;
-    border: 1px solid transparent;
+    display: inline-flex; align-items: center; gap: 0.4em; text-decoration: none; font-weight: 600;
+    padding: 0.6em 1.1em; border-radius: 999px; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer; font-family: inherit;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: var(--accent-text);
-  }
+  .btn-primary { background: var(--accent); color: var(--accent-text); }
   .btn-primary:hover { background: var(--accent-strong); }
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border-color: var(--pill-border);
-  }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--pill-border); }
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent-strong); }
-
   .meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    border-top: 1px solid var(--bg-card-border);
-    padding-top: 0.9em;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; font-size: 0.82rem; color: var(--text-dim);
+    border-top: 1px solid var(--bg-card-border); padding-top: 0.9em;
   }
-  .meta strong {
-    display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.72rem;
-    color: var(--text-faint);
-    margin-bottom: 0.3em;
-  }
-  .meta ul { margin: 0; padding: 0; list-style: none; }
+  .meta strong { display: block; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; color: var(--text-faint); margin-bottom: 0.3em; }
 
-  .card.upcoming {
-    border-style: dashed;
-    background: transparent;
+  pre.cmd {
+    background: #0f0d0a; border: 1px solid var(--pill-border); border-radius: 10px; padding: 0.8em 1em; overflow-x: auto;
+    font-size: 0.9rem; color: var(--text); margin: 0.4em 0 0.8em;
   }
-  .card.upcoming h3 { color: var(--text-dim); }
-  .card.upcoming p { color: var(--text-faint); margin: 0; }
+  code { background: var(--pill-bg); border: 1px solid var(--pill-border); border-radius: 6px; padding: 0.1em 0.4em; font-size: 0.9em; }
+  pre.cmd code { background: none; border: none; padding: 0; }
+  ol.steps, ul.plain { margin: 0 0 1.2em; padding-left: 1.4em; color: var(--text-dim); }
+  ol.steps li, ul.plain li { margin-bottom: 0.45em; }
+  details { margin: 0.6em 0 0; }
+  summary { cursor: pointer; color: var(--accent-strong); font-weight: 600; }
 
-  footer {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 1.5em 3em;
-    text-align: center;
-    color: var(--text-faint);
-    font-size: 0.85rem;
-  }
+  .third-list { list-style: none; margin: 0; padding: 0; }
+  .third-list li { padding: 0.55em 0; border-bottom: 1px solid var(--bg-card-border); display: flex; gap: 0.6em; flex-wrap: wrap; align-items: baseline; }
+  .third-list li:last-child { border-bottom: none; }
+  .third-list .name { font-weight: 600; color: var(--text); min-width: 12em; }
+  .third-list .what { color: var(--text-dim); flex: 1 1 20em; font-size: 0.92rem; }
+  .third-list a { font-size: 0.85rem; white-space: nowrap; }
+  .group-title { color: var(--accent-strong); margin: 1.2em 0 0.3em; font-size: 1.05rem; }
+
+  footer { max-width: 800px; margin: 0 auto; padding: 0 1.5em 3em; text-align: center; color: var(--text-faint); font-size: 0.85rem; }
   footer a { color: var(--text-dim); }
   footer p.privacy { margin-top: 0.6em; }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px; height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   [data-lang="en"][hidden] { display: none; }
-
-  @media (max-width: 480px) {
-    .meta { grid-template-columns: 1fr; }
-    .lang-switch { text-align: center; }
-  }
+  [data-lang="fr"][hidden] { display: none; }
+  @media (max-width: 560px) { .meta { grid-template-columns: 1fr; } .third-list .name { min-width: 0; } }
 </style>
 </head>
 <body>
@@ -323,334 +175,127 @@
 <header>
   <h1>Sku Addons</h1>
   <p>
-    <span data-lang="fr">Modules complémentaires d'accessibilité pour <strong>Sku</strong> — WoW: The Burning Crusade Classic (Anniversary)</span>
-    <span data-lang="en" hidden>Accessibility companion addons for <strong>Sku</strong> — WoW: The Burning Crusade Classic (Anniversary)</span>
+    <span data-lang="fr">Addons d'accessibilité pour <strong>Sku</strong> et un installateur qui s'occupe de tout — WoW Classic Anniversary (Burning Crusade)</span>
+    <span data-lang="en" hidden>Accessibility addons for <strong>Sku</strong> and an installer that takes care of everything — WoW Classic Anniversary (Burning Crusade)</span>
   </p>
 </header>
 
-<div class="lang-switch">
-  <button type="button" id="lang-toggle" aria-label="Switch language / Changer de langue">English</button>
+<div class="topbar">
+  <nav aria-label="Sections">
+    <a href="#installer"><span data-lang="fr">Installateur</span><span data-lang="en" hidden>Installer</span></a>
+    <a href="#zenq"><span data-lang="fr">Addons Zenq</span><span data-lang="en" hidden>Zenq addons</span></a>
+    <a href="#third"><span data-lang="fr">Addons tiers</span><span data-lang="en" hidden>Third-party addons</span></a>
+    <a href="#manual"><span data-lang="fr">Installation manuelle</span><span data-lang="en" hidden>Manual install</span></a>
+  </nav>
+  <div class="lang-switch">
+    <button type="button" id="lang-toggle" aria-label="Switch language / Changer de langue">English</button>
+  </div>
 </div>
-
-<p class="intro">
-  <span data-lang="fr">Chaque bouton télécharge la dernière version de l'addon au format <code>.zip</code>.
-  Tous nécessitent l'addon <a href="https://github.com/ZenqFR/Sku-WoW-Addon-TBC" target="_blank" rel="noopener">Sku</a>.</span>
-  <span data-lang="en" hidden>Each button downloads the latest version of the addon as a <code>.zip</code>.
-  All of them require the <a href="https://github.com/ZenqFR/Sku-WoW-Addon-TBC" target="_blank" rel="noopener">Sku</a> addon.</span>
-</p>
 
 <main id="main">
 
-  <h2 class="section-title">
-    <span data-lang="fr">Installation</span><span data-lang="en" hidden>Installation</span>
+  <h2 class="section-title" id="installer">
+    <span data-lang="fr">L'installateur</span><span data-lang="en" hidden>The installer</span>
   </h2>
-  <ol class="install-steps">
-    <li>
-      <span data-lang="fr">Télécharge le <code>.zip</code> de l'addon voulu grâce au bouton « Télécharger » de sa carte ci-dessous.</span>
-      <span data-lang="en" hidden>Download the <code>.zip</code> of the addon you want using the "Download" button on its card below.</span>
-    </li>
-    <li>
-      <span data-lang="fr">Extrais le dossier qu'il contient directement dans <code>World of Warcraft/_anniversary_/Interface/AddOns/</code> (le nom du dossier doit rester tel quel, ne pas le renommer).</span>
-      <span data-lang="en" hidden>Extract the folder it contains directly into <code>World of Warcraft/_anniversary_/Interface/AddOns/</code> (keep the folder name as-is, don't rename it).</span>
-    </li>
-    <li>
-      <span data-lang="fr">Lance ou relance WoW. Sur l'écran de connexion, clique sur « AddOns » (en bas à gauche) pour vérifier qu'il est bien coché.</span>
-      <span data-lang="en" hidden>Start or restart WoW. On the character-select screen, click "AddOns" (bottom left) to confirm it's checked on.</span>
-    </li>
-    <li>
-      <span data-lang="fr">Déjà en jeu&nbsp;? Un simple <code>/reload</code> suffit après avoir extrait les fichiers.</span>
-      <span data-lang="en" hidden>Already in-game? A simple <code>/reload</code> is enough after extracting the files.</span>
-    </li>
+
+  <article class="card featured" aria-labelledby="installer-title">
+    <h3 id="installer-title">
+      <span data-lang="fr">Installateur Zenq Addons</span><span data-lang="en" hidden>Zenq Addons Installer</span>
+      <span class="pill" id="installer-version">v1.0.0</span>
+    </h3>
+    <p class="desc">
+      <span data-lang="fr">Un seul programme, accessible au lecteur d'écran, qui <strong>installe et met à jour</strong> tous les addons de
+      cette page : les addons Zenq, <strong>Sku</strong> lui-même (il télécharge et lance l'installateur officiel de Sku, qui gère aussi
+      les sons de balise et l'outil de connexion) et les addons tiers courants — Questie, Deadly Boss Mods, Details, Auctionator,
+      Bagnon, GatherMate2, Pawn, TomTom, AtlasLoot, Auctioneer, Hear Kitty… Chaque addon est une <strong>case à cocher</strong>
+      (« Tout cocher » / « Tout décocher »), son état est lu dans la case — <em>installé 1.0.2, mise à jour 1.3.0 disponible</em> —
+      et les choix sont <strong>mémorisés</strong> d'une fois sur l'autre. La progression est annoncée au lecteur d'écran
+      (NVDA, JAWS) et, si tu veux, par la voix Windows.</span>
+      <span data-lang="en" hidden>One screen-reader-friendly program that <strong>installs and updates</strong> every addon on this page:
+      the Zenq addons, <strong>Sku</strong> itself (it downloads and starts Sku's official installer, which also handles the beacon
+      sounds and the login tool) and the usual third-party addons — Questie, Deadly Boss Mods, Details, Auctionator, Bagnon,
+      GatherMate2, Pawn, TomTom, AtlasLoot, Auctioneer, Hear Kitty… Each addon is a <strong>checkbox</strong> ("Check all" /
+      "Uncheck all"), its state is read in the checkbox — <em>installed 1.0.2, update 1.3.0 available</em> — and your choices
+      are <strong>remembered</strong> between runs. Progress is announced to the screen reader (NVDA, JAWS) and, if you like,
+      by the Windows voice.</span>
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" href="installer/ZenqAddons-Installateur.zip" download>
+        <span data-lang="fr">Télécharger l'installateur (.zip)</span><span data-lang="en" hidden>Download the installer (.zip)</span>
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/ZenqFR/sku-addons/blob/main/installer/README.md" target="_blank" rel="noopener">
+        <span data-lang="fr">Notice</span><span data-lang="en" hidden>Read me</span>
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/ZenqFR/sku-addons/issues/new" target="_blank" rel="noopener">
+        <span data-lang="fr">Signaler un problème</span><span data-lang="en" hidden>Report an issue</span>
+      </a>
+    </div>
+    <ol class="steps">
+      <li><span data-lang="fr">Extrais le <code>.zip</code> où tu veux, par exemple dans <em>Documents</em>.</span><span data-lang="en" hidden>Extract the <code>.zip</code> anywhere, for instance in <em>Documents</em>.</span></li>
+      <li><span data-lang="fr">Ouvre <strong>« Installateur Zenq Addons.cmd »</strong>. Windows peut demander une confirmation la première fois (« Exécuter »).</span><span data-lang="en" hidden>Open <strong>"Installateur Zenq Addons.cmd"</strong>. Windows may ask for a confirmation the first time ("Run").</span></li>
+      <li><span data-lang="fr">Le dossier World of Warcraft est trouvé tout seul ; sinon « Dossier WoW... » le demande. Choisis la version du jeu (Anniversary par défaut).</span><span data-lang="en" hidden>The World of Warcraft folder is found on its own; otherwise "WoW folder..." asks for it. Pick the game version (Anniversary by default).</span></li>
+      <li><span data-lang="fr">Coche ce que tu veux, puis <strong>« Installer ou mettre à jour la sélection »</strong>. Un résumé est annoncé à la fin.</span><span data-lang="en" hidden>Check what you want, then <strong>"Install or update the selection"</strong>. A summary is announced at the end.</span></li>
+    </ol>
+    <details>
+      <summary><span data-lang="fr">Sans rien télécharger : une ligne dans PowerShell</span><span data-lang="en" hidden>Without downloading anything: one PowerShell line</span></summary>
+      <pre class="cmd"><code>irm https://zenqfr.github.io/sku-addons/installer/ZenqAddons.ps1 | iex</code></pre>
+      <p class="section-intro">
+        <span data-lang="fr">Windows 10 ou 11, PowerShell intégré, aucune installation. L'installateur ne contacte que GitHub, CurseForge et cette page, en lecture ; il se met à jour lui-même quand une version plus récente est publiée (il demande avant). Réglages dans <code>%APPDATA%\ZenqAddons</code>.</span>
+        <span data-lang="en" hidden>Windows 10 or 11, built-in PowerShell, nothing to install. The installer only reads from GitHub, CurseForge and this page; it updates itself when a newer version is published (it asks first). Settings live in <code>%APPDATA%\ZenqAddons</code>.</span>
+      </p>
+    </details>
+  </article>
+
+  <h2 class="section-title" id="zenq">
+    <span data-lang="fr">Addons Zenq pour Sku</span><span data-lang="en" hidden>Zenq companion addons for Sku</span>
+  </h2>
+  <p class="section-intro">
+    <span data-lang="fr">Chaque bouton « Télécharger » donne la dernière version au format <code>.zip</code> ; tous nécessitent l'addon <a href="https://sku75.github.io/Sku-WoW-Addon-TBC/" target="_blank" rel="noopener">Sku</a> (sauf SkinningInfo, autonome). La mention <em>bêta</em> signale un addon construit récemment et encore peu éprouvé en jeu.</span>
+    <span data-lang="en" hidden>Each "Download" button gives the latest version as a <code>.zip</code>; all of them need the <a href="https://sku75.github.io/Sku-WoW-Addon-TBC/" target="_blank" rel="noopener">Sku</a> addon (except SkinningInfo, standalone). <em>Beta</em> marks an addon built recently and still little tested in game.</span>
+  </p>
+  <div id="zenq-cards" aria-live="polite" aria-busy="true">
+    <p class="section-intro"><span data-lang="fr">Chargement du catalogue…</span><span data-lang="en" hidden>Loading the catalog…</span></p>
+  </div>
+  <noscript>
+    <p class="section-intro">
+      <span data-lang="fr">Sans JavaScript, retrouve tous les addons sur <a href="https://github.com/ZenqFR?tab=repositories&q=Sku-">GitHub (ZenqFR)</a>.</span>
+      <span data-lang="en" hidden>Without JavaScript, find every addon on <a href="https://github.com/ZenqFR?tab=repositories&q=Sku-">GitHub (ZenqFR)</a>.</span>
+    </p>
+  </noscript>
+
+  <h2 class="section-title" id="third">
+    <span data-lang="fr">Sku et les addons tiers gérés par l'installateur</span><span data-lang="en" hidden>Sku and the third-party addons the installer manages</span>
+  </h2>
+  <p class="section-intro">
+    <span data-lang="fr">Ces addons ne sont pas de moi : l'installateur les prend à leur source (releases GitHub, fichiers CurseForge) et les tient à jour avec le reste. Sku passe par son <a href="https://sku75.github.io/Sku-WoW-Addon-TBC/" target="_blank" rel="noopener">installateur officiel</a>.</span>
+    <span data-lang="en" hidden>These addons are not mine: the installer fetches them from their source (GitHub releases, CurseForge files) and keeps them current with the rest. Sku goes through its <a href="https://sku75.github.io/Sku-WoW-Addon-TBC/" target="_blank" rel="noopener">official installer</a>.</span>
+  </p>
+  <article class="card" id="third-card">
+    <div id="third-lists"></div>
+  </article>
+
+  <h2 class="section-title" id="manual">
+    <span data-lang="fr">Installation manuelle d'un addon</span><span data-lang="en" hidden>Installing an addon by hand</span>
+  </h2>
+  <ol class="steps">
+    <li><span data-lang="fr">Télécharge le <code>.zip</code> de l'addon voulu avec le bouton « Télécharger » de sa carte.</span><span data-lang="en" hidden>Download the <code>.zip</code> of the addon you want with the "Download" button on its card.</span></li>
+    <li><span data-lang="fr">Extrais le dossier qu'il contient directement dans <code>World of Warcraft/_anniversary_/Interface/AddOns/</code> (le nom du dossier doit rester tel quel).</span><span data-lang="en" hidden>Extract the folder it contains straight into <code>World of Warcraft/_anniversary_/Interface/AddOns/</code> (keep the folder name as-is).</span></li>
+    <li><span data-lang="fr">Lance ou relance WoW. Sur l'écran de sélection des personnages, « AddOns » (en bas à gauche) montre qu'il est bien coché.</span><span data-lang="en" hidden>Start or restart WoW. On the character screen, "AddOns" (bottom left) shows it is checked on.</span></li>
+    <li><span data-lang="fr">Déjà en jeu ? Un <code>/reload</code> suffit pour une mise à jour ; un <em>nouveau</em> dossier demande un vrai redémarrage.</span><span data-lang="en" hidden>Already in game? A <code>/reload</code> is enough for an update; a <em>new</em> folder needs a real restart.</span></li>
   </ol>
-
-  <h2 class="section-title">
-    <span data-lang="fr">Disponibles</span><span data-lang="en" hidden>Available</span>
-  </h2>
-
-  <article class="card" id="skubagnonbridge" aria-labelledby="skubagnonbridge-title">
-    <h3 id="skubagnonbridge-title">SkuBagnonBridge</h3>
-    <span class="dep-pill">
-      <span data-lang="fr">Dépendance : Sku · Optionnel : Bagnon ou BagBrother</span>
-      <span data-lang="en" hidden>Requires: Sku · Optional: Bagnon or BagBrother</span>
-    </span>
-    <p class="desc">
-      <span data-lang="fr">Rend Sku compatible avec l'addon de sacs <strong>Bagnon / BagBrother</strong> : annonce vocale à l'ouverture
-      et à la fermeture des sacs, de la banque personnelle et de la banque de guilde, tri déclenchable au clavier
-      pour chacun séparément, et correction de la disparition du menu « Local » sur les trois. Transfert
-      bidirectionnel sacs ↔ banque en un choix depuis le menu (plus de glisser-déposer manuel), sous-menu
-      <strong>Catégorie</strong> (Objets de quête / Nourriture / Équipement) avec le détail complet d'un objet natif
-      Sku, et raccourcis clavier configurables directement depuis le menu Local.</span>
-      <span data-lang="en" hidden>Makes Sku work with the <strong>Bagnon / BagBrother</strong> bag addon: spoken announcements when your bags,
-      personal bank, or guild bank open and close, keyboard-triggered sort for each one independently, and a fix
-      for Sku's own "Local" menu disappearing on all three. Bidirectional bag ↔ bank transfer in one menu pick (no
-      more manual drag-and-drop), a <strong>Category</strong> submenu (Quest items / Food / Equipment) with full
-      native Sku item detail, and configurable keyboard shortcuts right from the Local menu.</span>
-    </p>
-    <p class="whatsnew">
-      <span data-lang="fr"><strong>Version 1.0.2&nbsp;:</strong> correction du plantage silencieux qui faisait disparaître la catégorie « Meilleur équipement ». Transfert sacs/banque, sous-menu Catégorie (6 listes) et détection d'améliorations via Pawn.</span>
-      <span data-lang="en" hidden><strong>Version 1.0.2:</strong> fixes the silent crash that made the “Best gear” category vanish. Bag/bank transfer, a six-list Category submenu, and Pawn-powered upgrade detection.</span>
-    </p>
-    <div class="actions">
-      <a class="btn btn-primary" id="skubagnonbridge-download"
-         href="https://github.com/ZenqFR/Sku-BagnonBridge/releases/latest">
-        <span id="skubagnonbridge-download-label" aria-live="polite">
-          <span data-lang="fr">Télécharger</span><span data-lang="en" hidden>Download</span>
-        </span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-BagnonBridge" target="_blank" rel="noopener">
-        <span data-lang="fr">Code &amp; changelog</span><span data-lang="en" hidden>Code &amp; changelog</span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-BagnonBridge/issues/new" target="_blank" rel="noopener">
-        <span data-lang="fr">Signaler un problème</span><span data-lang="en" hidden>Report an issue</span>
-      </a>
-    </div>
-    <div class="meta">
-      <div>
-        <strong><span data-lang="fr">Dernière mise à jour</span><span data-lang="en" hidden>Last updated</span></strong>
-        <span id="skubagnonbridge-updated" aria-live="polite">—</span>
-      </div>
-      <div>
-        <strong><span data-lang="fr">Téléchargements</span><span data-lang="en" hidden>Downloads</span></strong>
-        <ul>
-          <li id="skubagnonbridge-downloads" aria-live="polite">—</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-
-  <article class="card" id="skugatherroute" aria-labelledby="skugatherroute-title">
-    <h3 id="skugatherroute-title">GatherMate2 SKU Access</h3>
-    <span class="dep-pill">
-      <span data-lang="fr">Dépendance : Sku · Optionnel : GatherMate2 + GatherMate2 Data</span>
-      <span data-lang="en" hidden>Requires: Sku · Optional: GatherMate2 + GatherMate2 Data</span>
-    </span>
-    <p class="desc">
-      <span data-lang="fr">Transforme les données de <strong>GatherMate2</strong> en itinéraires de minage et d'herboristerie
-      guidés à la voix, en vraie « close route » (cheminement précis, pas à pas, sur le réseau de chemins de
-      Sku) plutôt qu'un simple beacon en ligne droite. Vérifie qu'un nœud est toujours bien là avant de s'y
-      engager, passe automatiquement au suivant sinon, et propose un raccourci clavier dédié
-      (<code>Ctrl+Shift+N</code>) pour sauter un nœud à tout moment. Sélection de plusieurs types de minerai ou
-      de plante à la fois sur un même itinéraire, son de confirmation au scan manuel
-      (<code>Ctrl+Shift+R</code>), et masquage des icônes GatherMate2 sur la minicarte et/ou la grande carte.
-      Tout — import des données GatherMate2 compris — est accessible depuis le menu Local de Sku
-      (<code>Shift+F1</code> → Route de minage / Route d'herbes), sans passer par le panneau d'options de
-      GatherMate2.</span>
-      <span data-lang="en" hidden>Turns <strong>GatherMate2</strong>'s recorded node data into voice-guided mining and herbalism routes, as a real
-      "close route" (precise, step-by-step travel over Sku's own path network) rather than a straight-line beacon.
-      Checks a node is still actually there before committing to it, automatically moves on to the next one if
-      not, and offers a dedicated keybind (<code>Ctrl+Shift+N</code>) to skip a node at any time. Select several
-      ore or herb types at once for the same route, a confirmation sound on a manual scan
-      (<code>Ctrl+Shift+R</code>), and hide GatherMate2's icons on the minimap and/or the world map. Everything —
-      including importing GatherMate2's own data — is reachable from Sku's Local menu (<code>Shift+F1</code> →
-      Mining route / Herb route), no need for GatherMate2's own options panel.</span>
-    </p>
-    <p class="whatsnew">
-      <span data-lang="fr"><strong>Version 1.0.2&nbsp;:</strong> l’addon s’arrête vraiment quand on le désactive. Itinéraires guidés à la voix, sélection multi-types persistante et son de confirmation au scan.</span>
-      <span data-lang="en" hidden><strong>Version 1.0.2:</strong> the addon really stops when you disable it. Voice-guided routes, persistent multi-type selection, and a confirmation sound on scans.</span>
-    </p>
-    <div class="actions">
-      <a class="btn btn-primary" id="skugatherroute-download"
-         href="https://github.com/ZenqFR/Sku-GatherRoute/releases/latest">
-        <span id="skugatherroute-download-label" aria-live="polite">
-          <span data-lang="fr">Télécharger</span><span data-lang="en" hidden>Download</span>
-        </span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-GatherRoute" target="_blank" rel="noopener">
-        <span data-lang="fr">Code &amp; changelog</span><span data-lang="en" hidden>Code &amp; changelog</span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-GatherRoute/issues/new" target="_blank" rel="noopener">
-        <span data-lang="fr">Signaler un problème</span><span data-lang="en" hidden>Report an issue</span>
-      </a>
-    </div>
-    <div class="meta">
-      <div>
-        <strong><span data-lang="fr">Dernière mise à jour</span><span data-lang="en" hidden>Last updated</span></strong>
-        <span id="skugatherroute-updated" aria-live="polite">—</span>
-      </div>
-      <div>
-        <strong><span data-lang="fr">Téléchargements</span><span data-lang="en" hidden>Downloads</span></strong>
-        <ul>
-          <li id="skugatherroute-downloads" aria-live="polite">—</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-
-  <article class="card" id="skuquestnearby" aria-labelledby="skuquestnearby-title">
-    <h3 id="skuquestnearby-title">SkuQuestNearby</h3>
-    <span class="dep-pill">
-      <span data-lang="fr">Dépendance : Sku</span><span data-lang="en" hidden>Requires: Sku</span>
-    </span>
-    <p class="desc">
-      <span data-lang="fr">Ajoute « Objectifs de quêtes proches » dans le menu Quêtes de Sku, juste à côté de « Quêtes actuelles » et
-      « Base de données des quêtes ». Les quêtes en cours et celles prêtes à rendre sont réunies dans une seule
-      liste triée par distance à l'objectif ou au PNJ de livraison le plus proche, avec le même détail de
-      sous-menu et la même lecture au <code>Shift+flèche du bas</code> que « Quêtes actuelles ». (Pour les quêtes
-      à <em>accepter</em> à proximité, Sku a déjà ça nativement : Base de données des quêtes → Démarrer dans la
-      zone → Par distance.)</span>
-      <span data-lang="en" hidden>Adds "Nearby quest objectives" to Sku's Quests menu, right next to "Current quests" and "Quest database".
-      In-progress quests and ones ready to turn in are merged into one list sorted by distance to the nearest
-      objective or turn-in NPC, with the same submenu detail and the same <code>Shift+Down Arrow</code> readout
-      as "Current quests". (For nearby quests to <em>accept</em>, Sku already has that natively: Quest database →
-      Start in Zone → By distance.)</span>
-    </p>
-    <p class="whatsnew">
-      <span data-lang="fr"><strong>Version 1.0.1&nbsp;:</strong> le suivi de quête fonctionne enfin. Objectifs triés par distance, plus l'option Suivre / Ne plus suivre une quête.</span>
-      <span data-lang="en" hidden><strong>Version 1.0.1:</strong> quest tracking finally works. Distance-sorted objectives, plus a track / stop-tracking toggle per quest.</span>
-    </p>
-    <div class="actions">
-      <a class="btn btn-primary" id="skuquestnearby-download"
-         href="https://github.com/ZenqFR/Sku-QuestNearby/releases/latest">
-        <span id="skuquestnearby-download-label" aria-live="polite">
-          <span data-lang="fr">Télécharger</span><span data-lang="en" hidden>Download</span>
-        </span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-QuestNearby" target="_blank" rel="noopener">
-        <span data-lang="fr">Code &amp; changelog</span><span data-lang="en" hidden>Code &amp; changelog</span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-QuestNearby/issues/new" target="_blank" rel="noopener">
-        <span data-lang="fr">Signaler un problème</span><span data-lang="en" hidden>Report an issue</span>
-      </a>
-    </div>
-    <div class="meta">
-      <div>
-        <strong><span data-lang="fr">Dernière mise à jour</span><span data-lang="en" hidden>Last updated</span></strong>
-        <span id="skuquestnearby-updated" aria-live="polite">—</span>
-      </div>
-      <div>
-        <strong><span data-lang="fr">Téléchargements</span><span data-lang="en" hidden>Downloads</span></strong>
-        <ul>
-          <li id="skuquestnearby-downloads" aria-live="polite">—</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-
-  <article class="card" id="skuquesttarget" aria-labelledby="skuquesttarget-title">
-    <h3 id="skuquesttarget-title">SkuQuestTarget</h3>
-    <span class="dep-pill">
-      <span data-lang="fr">Dépendance : Sku</span><span data-lang="en" hidden>Requires: Sku</span>
-    </span>
-    <p class="desc">
-      <span data-lang="fr">Un raccourci clavier dédié (<code>Ctrl+K</code> par défaut) qui cible directement le monstre lié à
-      l'objectif de votre quête en cours — y compris les monstres qui font simplement tomber un objet
-      recherché, pas seulement les cibles à abattre directement — sans besoin de le voir à l'écran pour cliquer
-      dessus. Quand plusieurs objectifs sont à portée, c'est le plus proche qui est pris.</span>
-      <span data-lang="en" hidden>A dedicated keybind (<code>Ctrl+K</code> by default) that directly targets the creature tied to your
-      current quest objective — including creatures that merely drop a needed item, not just direct kill targets
-      — with no need to see it on screen to click it. When several objectives are in range, the closest one
-      wins.</span>
-    </p>
-    <p class="whatsnew">
-      <span data-lang="fr"><strong>Version 1.1.0&nbsp;:</strong> le raccourci Ctrl+Maj+K, qui ciblait l'ennemi le plus proche, est retiré : il faisait doublon avec la touche Tab. Le ciblage de quête ne change pas.</span>
-      <span data-lang="en" hidden><strong>Version 1.1.0:</strong> the Ctrl+Shift+K keybind that targeted the nearest enemy is gone — it duplicated the Tab key. Quest targeting is unchanged.</span>
-    </p>
-    <div class="actions">
-      <a class="btn btn-primary" id="skuquesttarget-download"
-         href="https://github.com/ZenqFR/Sku-QuestTarget/releases/latest">
-        <span id="skuquesttarget-download-label" aria-live="polite">
-          <span data-lang="fr">Télécharger</span><span data-lang="en" hidden>Download</span>
-        </span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-QuestTarget" target="_blank" rel="noopener">
-        <span data-lang="fr">Code &amp; changelog</span><span data-lang="en" hidden>Code &amp; changelog</span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-QuestTarget/issues/new" target="_blank" rel="noopener">
-        <span data-lang="fr">Signaler un problème</span><span data-lang="en" hidden>Report an issue</span>
-      </a>
-    </div>
-    <div class="meta">
-      <div>
-        <strong><span data-lang="fr">Dernière mise à jour</span><span data-lang="en" hidden>Last updated</span></strong>
-        <span id="skuquesttarget-updated" aria-live="polite">—</span>
-      </div>
-      <div>
-        <strong><span data-lang="fr">Téléchargements</span><span data-lang="en" hidden>Downloads</span></strong>
-        <ul>
-          <li id="skuquesttarget-downloads" aria-live="polite">—</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-
-  <article class="card" id="skubeastlore" aria-labelledby="skubeastlore-title">
-    <h3 id="skubeastlore-title">SkuBeastLore</h3>
-    <span class="dep-pill">
-      <span data-lang="fr">Dépendance : Sku</span><span data-lang="en" hidden>Requires: Sku</span>
-    </span>
-    <p class="desc">
-      <span data-lang="fr">Un raccourci clavier dédié (<code>Ctrl+Shift+V</code> par défaut) qui lit à voix haute toutes les informations
-      du tooltip de ta cible — notamment ce que révèle la compétence Chasseur « Connaissance des bêtes » une fois
-      lancée sur une bête (famille, régime, apprivoisable). Sku lit les tooltips d'objets mais jamais ceux des
-      cibles, donc cette information n'était accessible d'aucune façon. Fonctionne sur n'importe quelle cible,
-      pas seulement les bêtes.</span>
-      <span data-lang="en" hidden>A dedicated keybind (<code>Ctrl+Shift+V</code> by default) that reads your current target's full tooltip out
-      loud — including what the Hunter ability "Beast Lore" reveals once cast on a beast (family, diet,
-      tameable). Sku reads item tooltips but never unit tooltips, so none of this was reachable before. Works on
-      any target, not just beasts.</span>
-    </p>
-    <p class="whatsnew">
-      <span data-lang="fr"><strong>Version 1.0.2&nbsp;:</strong> l'addon s'arrête vraiment quand on le désactive, et la lecture n'hérite plus de lignes laissées par un autre module.</span>
-      <span data-lang="en" hidden><strong>Version 1.0.2:</strong> the addon really stops when you disable it, and a read no longer inherits leftover lines from another module.</span>
-    </p>
-    <div class="actions">
-      <a class="btn btn-primary" id="skubeastlore-download"
-         href="https://github.com/ZenqFR/Sku-BeastLore/releases/latest">
-        <span id="skubeastlore-download-label" aria-live="polite">
-          <span data-lang="fr">Télécharger</span><span data-lang="en" hidden>Download</span>
-        </span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-BeastLore" target="_blank" rel="noopener">
-        <span data-lang="fr">Code &amp; changelog</span><span data-lang="en" hidden>Code &amp; changelog</span>
-      </a>
-      <a class="btn btn-secondary" href="https://github.com/ZenqFR/Sku-BeastLore/issues/new" target="_blank" rel="noopener">
-        <span data-lang="fr">Signaler un problème</span><span data-lang="en" hidden>Report an issue</span>
-      </a>
-    </div>
-    <div class="meta">
-      <div>
-        <strong><span data-lang="fr">Dernière mise à jour</span><span data-lang="en" hidden>Last updated</span></strong>
-        <span id="skubeastlore-updated" aria-live="polite">—</span>
-      </div>
-      <div>
-        <strong><span data-lang="fr">Téléchargements</span><span data-lang="en" hidden>Downloads</span></strong>
-        <ul>
-          <li id="skubeastlore-downloads" aria-live="polite">—</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-
-  <h2 class="section-title">
-    <span data-lang="fr">À venir</span><span data-lang="en" hidden>Coming up</span>
-  </h2>
-
-  <article class="card upcoming" aria-label="D'autres addons Sku sont en préparation / More Sku addons are in the works">
-    <h3><span data-lang="fr">Prochainement</span><span data-lang="en" hidden>Coming soon</span></h3>
-    <p>
-      <span data-lang="fr">D'autres modules complémentaires pour Sku sont en préparation et seront ajoutés ici au fur et à mesure
-      de leur sortie.</span>
-      <span data-lang="en" hidden>More companion addons for Sku are in the works and will be added here as they're released.</span>
-    </p>
-  </article>
 
   <h2 class="section-title">
     <span data-lang="fr">Autres ressources</span><span data-lang="en" hidden>Other resources</span>
   </h2>
-
   <article class="card" aria-labelledby="petopiafr-title">
     <h3 id="petopiafr-title">🐺 PetopiaFR</h3>
     <p class="desc">
-      <span data-lang="fr">Chasseur Horde&nbsp;? Retrouve <strong>PetopiaFR</strong>, mon guide en français des capacités de familier
-      apprivoisables — filtré aux zones Horde et neutres, avec un sélecteur de niveau pour voir quoi apprivoiser
-      ensuite.</span>
-      <span data-lang="en" hidden>Horde hunter? Check out <strong>PetopiaFR</strong>, my French-language guide to tameable pet abilities —
-      filtered to Horde and neutral zones, with a level slider to see what to tame next. (French only.)</span>
+      <span data-lang="fr">Chasseur Horde ? <strong>PetopiaFR</strong>, mon guide en français des capacités de familier apprivoisables — zones Horde et neutres, avec un sélecteur de niveau.</span>
+      <span data-lang="en" hidden>Horde hunter? <strong>PetopiaFR</strong>, my French-language guide to tameable pet abilities — Horde and neutral zones, with a level slider. (French only.)</span>
     </p>
     <div class="actions">
-      <a class="btn btn-secondary" href="https://zenqfr.github.io/petopiafr/">
-        <span data-lang="fr">Voir PetopiaFR</span><span data-lang="en" hidden>See PetopiaFR</span>
-      </a>
+      <a class="btn btn-secondary" href="https://zenqfr.github.io/petopiafr/"><span data-lang="fr">Voir PetopiaFR</span><span data-lang="en" hidden>See PetopiaFR</span></a>
+      <a class="btn btn-secondary" href="https://zenqfr.github.io/horde-leveling/"><span data-lang="fr">Route de la Horde (1-70)</span><span data-lang="en" hidden>Horde leveling route (1-70)</span></a>
     </div>
   </article>
 
@@ -659,15 +304,15 @@
 <footer>
   <p>
     <span data-lang="fr">Créé par <a href="https://github.com/ZenqFR" target="_blank" rel="noopener">ZenqFR</a>
-    · Tous les addons nécessitent <a href="https://github.com/ZenqFR/Sku-WoW-Addon-TBC" target="_blank" rel="noopener">Sku</a>
-    · Hébergé sur GitHub Pages</span>
+    · Les addons Zenq nécessitent <a href="https://sku75.github.io/Sku-WoW-Addon-TBC/" target="_blank" rel="noopener">Sku</a>
+    · Hébergé sur GitHub Pages · <a href="catalog.json">catalog.json</a></span>
     <span data-lang="en" hidden>Made by <a href="https://github.com/ZenqFR" target="_blank" rel="noopener">ZenqFR</a>
-    · All addons require <a href="https://github.com/ZenqFR/Sku-WoW-Addon-TBC" target="_blank" rel="noopener">Sku</a>
-    · Hosted on GitHub Pages</span>
+    · The Zenq addons require <a href="https://sku75.github.io/Sku-WoW-Addon-TBC/" target="_blank" rel="noopener">Sku</a>
+    · Hosted on GitHub Pages · <a href="catalog.json">catalog.json</a></span>
   </p>
   <p class="privacy">
-    <span data-lang="fr">Aucun cookie, aucun suivi — seuls les téléchargements <code>.zip</code> passent par l'API publique de GitHub.</span>
-    <span data-lang="en" hidden>No cookies, no tracking — only the <code>.zip</code> downloads go through GitHub's public API.</span>
+    <span data-lang="fr">Aucun cookie, aucun suivi — les versions et compteurs viennent de l'API publique de GitHub.</span>
+    <span data-lang="en" hidden>No cookies, no tracking — versions and counters come from GitHub's public API.</span>
   </p>
 </footer>
 
@@ -675,105 +320,158 @@
 (function () {
   "use strict";
 
-  var repos = [
-    ["ZenqFR/Sku-BagnonBridge", "skubagnonbridge"],
-    ["ZenqFR/Sku-GatherRoute", "skugatherroute"],
-    ["ZenqFR/Sku-QuestNearby", "skuquestnearby"],
-    ["ZenqFR/Sku-QuestTarget", "skuquesttarget"],
-    ["ZenqFR/Sku-BeastLore", "skubeastlore"]
-  ];
-  var releaseCache = {};
+  var catalog = null;
+  var releases = {};     // repo -> {tag, published_at, asset:{url,count}} | {error:true}
+  var CACHE_KEY = "sku-addons-releases-v2";
+  var CACHE_TTL = 10 * 60 * 1000;
 
-  function currentLang() {
-    return document.documentElement.lang === "en" ? "en" : "fr";
-  }
+  function lang() { return document.documentElement.lang === "en" ? "en" : "fr"; }
+  function loc(obj) { if (!obj) return ""; if (typeof obj === "string") return obj; return obj[lang()] || obj.fr || obj.en || ""; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function t(fr, en) { return lang() === "en" ? en : fr; }
 
-  function formatDate(iso, lang) {
+  function formatDate(iso) {
     try {
-      var d = new Date(iso);
-      var locale = lang === "en" ? "en-GB" : "fr-FR";
-      return d.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" }) +
-        (lang === "en" ? " at " : " à ") + d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
-    } catch (e) {
-      return iso;
-    }
+      var d = new Date(iso), l = lang() === "en" ? "en-GB" : "fr-FR";
+      return d.toLocaleDateString(l, { day: "numeric", month: "long", year: "numeric" });
+    } catch (e) { return iso; }
   }
 
-  function renderRelease(prefix, repo) {
-    var lang = currentLang();
-    var data = releaseCache[prefix];
-    if (!data) return; // still loading -- leave the static "—" placeholder
-
-    var downloadLink = document.getElementById(prefix + "-download");
-    var downloadLabel = document.getElementById(prefix + "-download-label");
-    var updated = document.getElementById(prefix + "-updated");
-    var downloads = document.getElementById(prefix + "-downloads");
-
-    if (data.error) {
-      downloadLabel.textContent = lang === "en" ? "Download the latest version" : "Télécharger la dernière version";
-      updated.textContent = lang === "en" ? "see the releases page" : "voir la page des releases";
-      downloads.textContent = lang === "en" ? "see the releases page" : "voir la page des releases";
-      return;
-    }
-
-    var asset = (data.assets || [])[0];
-    var version = data.tag_name || "";
-
-    if (asset && asset.browser_download_url) {
-      downloadLink.href = asset.browser_download_url;
-    }
-    downloadLabel.textContent = version ? (repo.split("/")[1] + " " + version) : (lang === "en" ? "Download" : "Télécharger");
-    updated.textContent = data.published_at ? formatDate(data.published_at, lang) : "—";
-
-    if (asset) {
-      downloads.textContent = asset.download_count + (lang === "en" ? " for version " : " pour la version ") + version;
-    } else {
-      downloads.textContent = "—";
-    }
+  function loadCache() {
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return;
+      var c = JSON.parse(raw);
+      if (Date.now() - c.at < CACHE_TTL) releases = c.data || {};
+    } catch (e) {}
+  }
+  function saveCache() {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data: releases })); } catch (e) {}
   }
 
-  function loadRelease(repo, prefix) {
+  function fetchRelease(repo, done) {
+    if (releases[repo] && !releases[repo].error) { done(); return; }
     fetch("https://api.github.com/repos/" + repo + "/releases/latest")
-      .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        return r.json();
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (d) {
+        var asset = (d.assets || []).filter(function (a) { return /\.zip$/i.test(a.name); })[0];
+        releases[repo] = { tag: d.tag_name || "", published_at: d.published_at || "", asset: asset ? { url: asset.browser_download_url, count: asset.download_count } : null };
+        saveCache(); done();
       })
-      .then(function (data) {
-        releaseCache[prefix] = data;
-        renderRelease(prefix, repo);
-      })
-      .catch(function () {
-        // API rate-limited or unreachable: the static fallback link to the
-        // releases page (already in the href) keeps the download working,
-        // just without the live version/count details.
-        releaseCache[prefix] = { error: true };
-        renderRelease(prefix, repo);
+      .catch(function () { releases[repo] = { error: true }; done(); });
+  }
+
+  function cardHtml(a) {
+    var repo = a.packages && a.packages[0] && a.packages[0].repo;
+    var home = (a.links && a.links.home) || (repo ? "https://github.com/" + repo : "#");
+    var issues = (a.links && a.links.issues) || (repo ? "https://github.com/" + repo + "/issues/new" : null);
+    var changelog = (a.links && a.links.changelog) || home;
+    var rel = repo ? releases[repo] : null;
+    var dl = repo ? "https://github.com/" + repo + "/releases/latest" : home;
+    var dlLabel = t("Télécharger", "Download");
+    var version = a.version ? "v" + a.version : "";
+    var updated = "—", count = "—";
+    if (rel && !rel.error) {
+      if (rel.asset && rel.asset.url) dl = rel.asset.url;
+      if (rel.tag) version = rel.tag;
+      dlLabel = t("Télécharger", "Download") + (rel.tag ? " " + rel.tag : "");
+      updated = rel.published_at ? formatDate(rel.published_at) : "—";
+      count = rel.asset ? String(rel.asset.count) : "—";
+    } else if (rel && rel.error) {
+      updated = t("voir la page des releases", "see the releases page");
+      count = updated;
+    }
+    var deps = [];
+    if (a.requires && a.requires.length) deps.push(t("Nécessite : ", "Requires: ") + a.requires.join(", "));
+    if (a.optional && a.optional.length) deps.push(t("Optionnel : ", "Optional: ") + a.optional.join(", "));
+    var id = esc(a.id.toLowerCase());
+    var h = '<article class="card" id="' + id + '" aria-labelledby="' + id + '-title">';
+    h += '<h3 id="' + id + '-title">' + esc(a.name);
+    if (version) h += ' <span class="pill">' + esc(version) + '</span>';
+    if (a.status === "beta") h += ' <span class="pill beta">' + t("bêta", "beta") + '</span>';
+    h += '</h3>';
+    if (deps.length) h += '<span class="pill">' + esc(deps.join(" · ")) + '</span>';
+    h += '<p class="desc">' + esc(loc(a.summary)) + '</p>';
+    h += '<div class="actions">';
+    h += '<a class="btn btn-primary" href="' + esc(dl) + '">' + esc(dlLabel) + '</a>';
+    h += '<a class="btn btn-secondary" href="' + esc(changelog) + '" target="_blank" rel="noopener">Code &amp; changelog</a>';
+    if (issues) h += '<a class="btn btn-secondary" href="' + esc(issues) + '" target="_blank" rel="noopener">' + t("Signaler un problème", "Report an issue") + '</a>';
+    h += '</div>';
+    h += '<div class="meta"><div><strong>Version</strong>' + esc(version || "—") + '</div>';
+    h += '<div><strong>' + t("Dernière mise à jour", "Last updated") + '</strong>' + esc(updated) + '</div>';
+    h += '<div><strong>' + t("Téléchargements", "Downloads") + '</strong>' + esc(count) + '</div></div>';
+    h += '</article>';
+    return h;
+  }
+
+  function renderZenq() {
+    var box = document.getElementById("zenq-cards");
+    if (!catalog) return;
+    var list = catalog.addons.filter(function (a) { return a.group === "zenq" || a.group === "diag"; });
+    box.innerHTML = list.map(cardHtml).join("");
+    box.setAttribute("aria-busy", "false");
+  }
+
+  function renderThird() {
+    var box = document.getElementById("third-lists");
+    if (!catalog) return;
+    var groups = catalog.groups.filter(function (g) { return g.id !== "zenq" && g.id !== "diag"; });
+    var h = "";
+    groups.forEach(function (g) {
+      var items = catalog.addons.filter(function (a) { return a.group === g.id; });
+      if (!items.length) return;
+      h += '<h4 class="group-title">' + esc(loc(g.label)) + '</h4><ul class="third-list">';
+      items.forEach(function (a) {
+        var link = (a.links && (a.links.home || a.links.curseforge)) || null;
+        h += '<li><span class="name">' + esc(a.name) + '</span><span class="what">' + esc(loc(a.summary)) + '</span>';
+        if (link) h += '<a href="' + esc(link) + '" target="_blank" rel="noopener">' + t("site", "site") + '</a>';
+        h += '</li>';
       });
-  }
-
-  function applyLang(lang) {
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-lang="fr"]').forEach(function (el) { el.hidden = lang !== "fr"; });
-    document.querySelectorAll('[data-lang="en"]').forEach(function (el) { el.hidden = lang !== "en"; });
-    var toggle = document.getElementById("lang-toggle");
-    if (toggle) toggle.textContent = lang === "fr" ? "English" : "Français";
-    repos.forEach(function (r) { renderRelease(r[1], r[0]); });
-  }
-
-  var savedLang = "fr";
-  try { savedLang = localStorage.getItem("sku-addons-lang") || "fr"; } catch (e) {}
-  applyLang(savedLang);
-
-  var toggleBtn = document.getElementById("lang-toggle");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", function () {
-      var next = currentLang() === "fr" ? "en" : "fr";
-      applyLang(next);
-      try { localStorage.setItem("sku-addons-lang", next); } catch (e) {}
+      h += '</ul>';
     });
+    box.innerHTML = h;
   }
 
-  repos.forEach(function (r) { loadRelease(r[0], r[1]); });
+  function renderAll() { renderZenq(); renderThird(); }
+
+  function applyLang(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-lang="fr"]').forEach(function (el) { el.hidden = l !== "fr"; });
+    document.querySelectorAll('[data-lang="en"]').forEach(function (el) { el.hidden = l !== "en"; });
+    var toggle = document.getElementById("lang-toggle");
+    if (toggle) toggle.textContent = l === "fr" ? "English" : "Français";
+    renderAll();
+  }
+
+  var saved = "fr";
+  try { saved = localStorage.getItem("sku-addons-lang") || "fr"; } catch (e) {}
+  applyLang(saved);
+  var toggleBtn = document.getElementById("lang-toggle");
+  if (toggleBtn) toggleBtn.addEventListener("click", function () {
+    var next = lang() === "fr" ? "en" : "fr";
+    applyLang(next);
+    try { localStorage.setItem("sku-addons-lang", next); } catch (e) {}
+  });
+
+  loadCache();
+  fetch("catalog.json?t=" + Math.floor(Date.now() / 600000))
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (c) {
+      catalog = c;
+      var v = document.getElementById("installer-version");
+      if (v && c.installer && c.installer.version) v.textContent = "v" + c.installer.version;
+      renderAll();
+      var repos = {};
+      c.addons.forEach(function (a) {
+        if ((a.group === "zenq" || a.group === "diag") && a.packages && a.packages[0] && a.packages[0].repo) repos[a.packages[0].repo] = true;
+      });
+      Object.keys(repos).forEach(function (repo) { fetchRelease(repo, renderZenq); });
+    })
+    .catch(function () {
+      var box = document.getElementById("zenq-cards");
+      box.setAttribute("aria-busy", "false");
+      box.innerHTML = '<p class="section-intro">' + t("Catalogue injoignable. Les addons sont sur ", "Catalog unreachable. The addons are on ") + '<a href="https://github.com/ZenqFR?tab=repositories&q=Sku-">GitHub</a>.</p>';
+    });
 })();
 </script>
 
