@@ -220,8 +220,11 @@
       by the Windows voice.</span>
     </p>
     <div class="actions">
-      <a class="btn btn-primary" href="installer/ZenqAddons-Installateur.zip" download>
-        <span data-lang="fr">Télécharger l'installateur (.zip)</span><span data-lang="en" hidden>Download the installer (.zip)</span>
+      <a class="btn btn-primary" href="installer/ZenqAddonsInstaller.exe" download>
+        <span data-lang="fr">Télécharger l'installateur (.exe)</span><span data-lang="en" hidden>Download the installer (.exe)</span>
+      </a>
+      <a class="btn btn-secondary" href="installer/ZenqAddons-Installateur.zip" download>
+        <span data-lang="fr">Version script (.zip)</span><span data-lang="en" hidden>Script version (.zip)</span>
       </a>
       <a class="btn btn-secondary" href="https://github.com/ZenqFR/sku-addons/blob/main/installer/README.md" target="_blank" rel="noopener">
         <span data-lang="fr">Notice</span><span data-lang="en" hidden>Read me</span>
@@ -231,17 +234,17 @@
       </a>
     </div>
     <ol class="steps">
-      <li><span data-lang="fr">Extrais le <code>.zip</code> où tu veux, par exemple dans <em>Documents</em>.</span><span data-lang="en" hidden>Extract the <code>.zip</code> anywhere, for instance in <em>Documents</em>.</span></li>
-      <li><span data-lang="fr">Ouvre <strong>« Installateur Zenq Addons.cmd »</strong>. Windows peut demander une confirmation la première fois (« Exécuter »).</span><span data-lang="en" hidden>Open <strong>"Installateur Zenq Addons.cmd"</strong>. Windows may ask for a confirmation the first time ("Run").</span></li>
+      <li><span data-lang="fr">Télécharge <strong>ZenqAddonsInstaller.exe</strong> et mets-le où tu veux, par exemple dans <em>Documents</em>. Un seul fichier, rien à installer.</span><span data-lang="en" hidden>Download <strong>ZenqAddonsInstaller.exe</strong> and put it anywhere, for instance in <em>Documents</em>. One file, nothing to install.</span></li>
+      <li><span data-lang="fr">Ouvre-le. La première fois, Windows peut afficher « Windows a protégé votre ordinateur » (le programme n'est pas signé) : « Informations complémentaires », puis « Exécuter quand même ».</span><span data-lang="en" hidden>Open it. The first time, Windows may show "Windows protected your PC" (the program is not signed): "More info", then "Run anyway".</span></li>
       <li><span data-lang="fr">Le dossier World of Warcraft est trouvé tout seul ; sinon « Dossier WoW... » le demande. Choisis la version du jeu (Anniversary par défaut).</span><span data-lang="en" hidden>The World of Warcraft folder is found on its own; otherwise "WoW folder..." asks for it. Pick the game version (Anniversary by default).</span></li>
       <li><span data-lang="fr">Coche ce que tu veux, puis <strong>« Installer ou mettre à jour la sélection »</strong>. Un résumé est annoncé à la fin.</span><span data-lang="en" hidden>Check what you want, then <strong>"Install or update the selection"</strong>. A summary is announced at the end.</span></li>
     </ol>
     <details>
-      <summary><span data-lang="fr">Sans rien télécharger : une ligne dans PowerShell</span><span data-lang="en" hidden>Without downloading anything: one PowerShell line</span></summary>
+      <summary><span data-lang="fr">Autres façons de le lancer : version script (.zip) ou une ligne dans PowerShell</span><span data-lang="en" hidden>Other ways to run it: script version (.zip) or one PowerShell line</span></summary>
       <pre class="cmd"><code>irm https://zenqfr.github.io/sku-addons/installer/ZenqAddons.ps1 | iex</code></pre>
       <p class="section-intro">
-        <span data-lang="fr">Windows 10 ou 11, PowerShell intégré, aucune installation. L'installateur ne contacte que GitHub, CurseForge et cette page, en lecture ; il se met à jour lui-même quand une version plus récente est publiée (il demande avant). Réglages dans <code>%APPDATA%\ZenqAddons</code>.</span>
-        <span data-lang="en" hidden>Windows 10 or 11, built-in PowerShell, nothing to install. The installer only reads from GitHub, CurseForge and this page; it updates itself when a newer version is published (it asks first). Settings live in <code>%APPDATA%\ZenqAddons</code>.</span>
+        <span data-lang="fr">Le <code>.zip</code> contient le même installateur sous forme de script : « Installateur Zenq Addons.cmd » le lance. Windows 10 ou 11, PowerShell intégré, aucune installation. L'installateur ne contacte que GitHub, CurseForge et cette page, en lecture ; il se met à jour lui-même quand une version plus récente est publiée (il demande avant). Réglages dans <code>%APPDATA%\ZenqAddons</code>.</span>
+        <span data-lang="en" hidden>The <code>.zip</code> holds the same installer as a script: "Installateur Zenq Addons.cmd" starts it. Windows 10 or 11, built-in PowerShell, nothing to install. The installer only reads from GitHub, CurseForge and this page; it updates itself when a newer version is published (it asks first). Settings live in <code>%APPDATA%\ZenqAddons</code>.</span>
       </p>
     </details>
   </article>

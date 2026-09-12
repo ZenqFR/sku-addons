@@ -10,8 +10,8 @@ Chaque addon est une **case à cocher** (« Tout cocher » / « Tout décocher �
 
 ## Installation
 
-1. Télécharge `ZenqAddons-Installateur.zip` et extrais-le où tu veux (par exemple dans *Documents*).
-2. Ouvre **« Installateur Zenq Addons.cmd »**. Windows peut demander une confirmation la première fois (fichier téléchargé) : « Exécuter ».
+1. Télécharge **`ZenqAddonsInstaller.exe`** (un seul fichier, rien à installer) et mets-le où tu veux, par exemple dans *Documents*. Il embarque le script `ZenqAddons.ps1` et l'exécute avec le moteur PowerShell de Windows, sans fenêtre de console. Variante : `ZenqAddons-Installateur.zip`, le même installateur en script, lancé par « Installateur Zenq Addons.cmd ».
+2. Ouvre-le. La première fois, Windows peut afficher « Windows a protégé votre ordinateur » (programme non signé) : « Informations complémentaires », puis « Exécuter quand même ».
 3. Le dossier World of Warcraft est trouvé tout seul (registre Battle.net, disques) ; sinon le bouton « Dossier WoW... » le demande. La version du jeu se choisit dans la liste (Anniversary par défaut).
 4. Coche ce que tu veux, puis **« Installer ou mettre à jour la sélection »**. À la fin, un résumé est annoncé et affiché. Un nouveau dossier d'addon demande un vrai redémarrage de WoW.
 
@@ -36,7 +36,8 @@ ZenqAddons.ps1 -WowPath "D:\Jeux\World of Warcraft" -Flavor anniversary
 - La version installée est lue dans le `.toc` de chaque addon ; ce que l'installateur a posé lui-même est noté dans `%APPDATA%\ZenqAddons\installed.json`, ce qui rend la détection des mises à jour exacte dès la deuxième fois.
 - Un dossier remplacé est supprimé puis réécrit depuis l'archive ; les réglages du jeu (`WTF`) ne sont jamais touchés.
 - Réglages : `%APPDATA%\ZenqAddons\settings.json`. Journal : `%APPDATA%\ZenqAddons\journal.log` (bouton « Ouvrir le journal »).
-- L'installateur se met à jour lui-même quand le catalogue annonce une version plus récente (il demande avant).
+- L'installateur se met à jour lui-même quand le catalogue annonce une version plus récente (il demande avant) : l'exe télécharge le nouvel exe et se relance, le script télécharge le nouveau script.
+- Sources de l'exe : `installer/src` (`Program.cs`, `build.ps1` : compilé avec le `csc.exe` du .NET Framework livré dans Windows).
 
 Windows 10 ou 11, Windows PowerShell 5.1 (présent d'origine). Aucune donnée n'est envoyée nulle part : seuls GitHub, CurseForge et cette page sont contactés, en lecture.
 
@@ -44,4 +45,4 @@ Windows 10 ou 11, Windows PowerShell 5.1 (présent d'origine). Aucune donnée n'
 
 # Zenq Addons Installer (English)
 
-One screen-reader-friendly program to **install and update** the Zenq companion addons for Sku, Sku itself (by downloading and starting its official installer) and the usual third-party addons (Questie, DBM, Details, Auctionator, Bagnon, GatherMate2, Pawn, TomTom, AtlasLoot, Auctioneer, Hear Kitty…). One checkbox per addon, "Check all / Uncheck all", state read in the checkbox text, choices remembered between runs, progress announced through UIA notifications. Download `ZenqAddons-Installateur.zip`, extract it, open `Installateur Zenq Addons.cmd`. The language switches with the "Français / English" button.
+One screen-reader-friendly program to **install and update** the Zenq companion addons for Sku, Sku itself (by downloading and starting its official installer) and the usual third-party addons (Questie, DBM, Details, Auctionator, Bagnon, GatherMate2, Pawn, TomTom, AtlasLoot, Auctioneer, Hear Kitty…). One checkbox per addon, "Check all / Uncheck all", state read in the checkbox text, choices remembered between runs, progress announced through UIA notifications. Download `ZenqAddonsInstaller.exe` (one file, nothing to install; Windows may show "Windows protected your PC" the first time: "More info", "Run anyway") or `ZenqAddons-Installateur.zip` (the same installer as a script, started by `Installateur Zenq Addons.cmd`). The language switches with the "Français / English" button.

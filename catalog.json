@@ -4,6 +4,7 @@
   "site": "https://zenqfr.github.io/sku-addons/",
   "installer": {
     "version": "1.0.0",
+    "exe": "https://zenqfr.github.io/sku-addons/installer/ZenqAddonsInstaller.exe",
     "zip": "https://zenqfr.github.io/sku-addons/installer/ZenqAddons-Installateur.zip",
     "script": "https://zenqfr.github.io/sku-addons/installer/ZenqAddons.ps1",
     "launcher": "Installateur Zenq Addons.cmd",
