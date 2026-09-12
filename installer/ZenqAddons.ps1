@@ -87,6 +87,7 @@ $Script:Strings = @{
         upToDate         = 'à jour ({0})'
         updateAvail      = 'installé {0}, mise à jour {1} disponible'
         installedUnknown = 'installé {0}, version en ligne inconnue ({1})'
+        notPublished     = 'pas encore publié en ligne'
         newerLocal       = 'installé {0}, plus récent que la version en ligne {1}'
         checking         = 'vérification...'
         beta             = '(bêta)'
@@ -149,6 +150,7 @@ $Script:Strings = @{
         upToDate         = 'up to date ({0})'
         updateAvail      = 'installed {0}, update {1} available'
         installedUnknown = 'installed {0}, online version unknown ({1})'
+        notPublished     = 'not published online yet'
         newerLocal       = 'installed {0}, newer than the online version {1}'
         checking         = 'checking...'
         beta             = '(beta)'
@@ -724,6 +726,7 @@ function Refresh-Status($st) {
     $st.update = $false
     $st.latest = $null
     if ($addon.infoOnly) { $st.checked = $true; return }
+    if ((Has-Prop $addon 'published') -and ($addon.published -eq $false)) { $st.error = (T 'notPublished'); $st.checked = $true; return }
     foreach ($pkg in (Get-Packages $addon $Script:Ctx.flavor.id)) {
         $entry = @{ pkg = $pkg; resolved = $null; recorded = (Get-StateEntry $Script:Ctx.flavor.id ([string]$pkg.key)); needs = $false; error = $null }
         try {

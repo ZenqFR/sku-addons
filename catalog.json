@@ -35,7 +35,7 @@
       "requires": ["Sku"], "optional": ["Bagnon", "BagBrother", "Pawn", "SkuAuctionatorBridge"],
       "folders": ["SkuBagnonBridge"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-BagnonBridge", "changelog": "https://github.com/ZenqFR/Sku-BagnonBridge/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-BagnonBridge/issues/new" },
-      "packages": [ { "key": "SkuBagnonBridge", "type": "github-release", "repo": "ZenqFR/Sku-BagnonBridge", "asset": "SkuBagnonBridge-{tag}.zip", "roots": ["SkuBagnonBridge"] } ]
+      "packages": [ { "key": "SkuBagnonBridge", "type": "github-release", "repo": "ZenqFR/Sku-BagnonBridge", "asset": "SkuBagnonBridge-{version}.zip", "roots": ["SkuBagnonBridge"] } ]
     },
     {
       "id": "SkuGatherRoute", "group": "zenq", "name": "GatherMate2 SKU Access", "version": "1.0.3", "status": "stable",
@@ -46,7 +46,7 @@
       "requires": ["Sku"], "optional": ["GatherMate2", "GatherMate2_Data"],
       "folders": ["SkuGatherRoute"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-GatherRoute", "changelog": "https://github.com/ZenqFR/Sku-GatherRoute/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-GatherRoute/issues/new" },
-      "packages": [ { "key": "SkuGatherRoute", "type": "github-release", "repo": "ZenqFR/Sku-GatherRoute", "asset": "SkuGatherRoute-{tag}.zip", "roots": ["SkuGatherRoute"] } ]
+      "packages": [ { "key": "SkuGatherRoute", "type": "github-release", "repo": "ZenqFR/Sku-GatherRoute", "asset": "SkuGatherRoute-{version}.zip", "roots": ["SkuGatherRoute"] } ]
     },
     {
       "id": "SkuQuestNearby", "group": "zenq", "name": "SkuQuestNearby", "version": "1.2.0", "status": "stable",
@@ -57,7 +57,7 @@
       "requires": ["Sku", "Questie"], "optional": ["SkuAllyBeacon"],
       "folders": ["SkuQuestNearby"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-QuestNearby", "changelog": "https://github.com/ZenqFR/Sku-QuestNearby/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-QuestNearby/issues/new" },
-      "packages": [ { "key": "SkuQuestNearby", "type": "github-release", "repo": "ZenqFR/Sku-QuestNearby", "asset": "SkuQuestNearby-{tag}.zip", "roots": ["SkuQuestNearby"] } ]
+      "packages": [ { "key": "SkuQuestNearby", "type": "github-release", "repo": "ZenqFR/Sku-QuestNearby", "asset": "SkuQuestNearby-{version}.zip", "roots": ["SkuQuestNearby"] } ]
     },
     {
       "id": "SkuQuestTarget", "group": "zenq", "name": "SkuQuestTarget", "version": "1.2.1", "status": "stable",
@@ -68,10 +68,10 @@
       "requires": ["Sku"], "optional": ["Questie"],
       "folders": ["SkuQuestTarget"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-QuestTarget", "changelog": "https://github.com/ZenqFR/Sku-QuestTarget/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-QuestTarget/issues/new" },
-      "packages": [ { "key": "SkuQuestTarget", "type": "github-release", "repo": "ZenqFR/Sku-QuestTarget", "asset": "SkuQuestTarget-{tag}.zip", "roots": ["SkuQuestTarget"] } ]
+      "packages": [ { "key": "SkuQuestTarget", "type": "github-release", "repo": "ZenqFR/Sku-QuestTarget", "asset": "SkuQuestTarget-{version}.zip", "roots": ["SkuQuestTarget"] } ]
     },
     {
-      "id": "SkuAllyBeacon", "group": "zenq", "name": "SkuAllyBeacon", "version": "1.2.1", "status": "beta",
+      "id": "SkuAllyBeacon", "published": false, "group": "zenq", "name": "SkuAllyBeacon", "version": "1.2.1", "status": "beta",
       "summary": {
         "fr": "Balise sonore continue sur un membre du groupe ciblé (Ctrl+P), ou sur un PNJ d'escorte, avec alertes quand il est attaqué, bas en vie ou mort ; en instance, suivi par paliers de distance.",
         "en": "Continuous audio beacon on a targeted group member (Ctrl+P), or an escort NPC, with alerts when they are attacked, low on health or dead; distance bands inside instances."
@@ -79,10 +79,10 @@
       "requires": ["Sku"], "optional": ["SkuQuestNearby"],
       "folders": ["SkuAllyBeacon"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-AllyBeacon", "changelog": "https://github.com/ZenqFR/Sku-AllyBeacon/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-AllyBeacon/issues/new" },
-      "packages": [ { "key": "SkuAllyBeacon", "type": "github-release", "repo": "ZenqFR/Sku-AllyBeacon", "asset": "SkuAllyBeacon-{tag}.zip", "roots": ["SkuAllyBeacon"] } ]
+      "packages": [ { "key": "SkuAllyBeacon", "type": "github-release", "repo": "ZenqFR/Sku-AllyBeacon", "asset": "SkuAllyBeacon-{version}.zip", "roots": ["SkuAllyBeacon"] } ]
     },
     {
-      "id": "SkuAuctionatorBridge", "group": "zenq", "name": "SkuAuctionatorBridge", "version": "1.3.0", "status": "stable",
+      "id": "SkuAuctionatorBridge", "published": false, "group": "zenq", "name": "SkuAuctionatorBridge", "version": "1.3.0", "status": "stable",
       "summary": {
         "fr": "L'onglet Ventes d'Auctionator entièrement à l'oreille depuis le menu HDV de Sku : prix mémorisé, piles, durée, dépôt, concurrents, annulation ; « HDV : prêt à vendre » (Maj+F1) et une tournée de vente en une passe avec garde-fou sur le prix.",
         "en": "Auctionator's Selling tab entirely by ear from Sku's AH menu: remembered price, stacks, duration, deposit, competitors, cancelling; \"AH: ready to sell\" (Shift+F1) and a one-go selling run with a price guard."
@@ -90,10 +90,10 @@
       "requires": ["Sku", "Auctionator"], "optional": [],
       "folders": ["SkuAuctionatorBridge"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-AuctionatorBridge", "changelog": "https://github.com/ZenqFR/Sku-AuctionatorBridge/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-AuctionatorBridge/issues/new" },
-      "packages": [ { "key": "SkuAuctionatorBridge", "type": "github-release", "repo": "ZenqFR/Sku-AuctionatorBridge", "asset": "SkuAuctionatorBridge-{tag}.zip", "roots": ["SkuAuctionatorBridge"] } ]
+      "packages": [ { "key": "SkuAuctionatorBridge", "type": "github-release", "repo": "ZenqFR/Sku-AuctionatorBridge", "asset": "SkuAuctionatorBridge-{version}.zip", "roots": ["SkuAuctionatorBridge"] } ]
     },
     {
-      "id": "SkuCraftStock", "group": "zenq", "name": "SkuCraftStock", "version": "1.1.0", "status": "beta",
+      "id": "SkuCraftStock", "published": false, "group": "zenq", "name": "SkuCraftStock", "version": "1.1.0", "status": "beta",
       "summary": {
         "fr": "Dans les menus de métier de Sku, dit pour chaque recette si les matériaux sont là, en comptant la banque et la banque de guilde (cache Bagnon) ; file de fabrication, retrait des matériaux à la banque, partage de recette dans le chat.",
         "en": "In Sku's profession menus, says for every recipe whether the materials are there, counting the bank and guild bank (Bagnon cache); craft queue, material withdrawal at the bank, recipe sharing in chat."
@@ -101,10 +101,10 @@
       "requires": ["Sku"], "optional": ["Bagnon", "BagBrother", "SkuBagnonBridge"],
       "folders": ["SkuCraftStock"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-CraftStock", "changelog": "https://github.com/ZenqFR/Sku-CraftStock/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-CraftStock/issues/new" },
-      "packages": [ { "key": "SkuCraftStock", "type": "github-release", "repo": "ZenqFR/Sku-CraftStock", "asset": "SkuCraftStock-{tag}.zip", "roots": ["SkuCraftStock"] } ]
+      "packages": [ { "key": "SkuCraftStock", "type": "github-release", "repo": "ZenqFR/Sku-CraftStock", "asset": "SkuCraftStock-{version}.zip", "roots": ["SkuCraftStock"] } ]
     },
     {
-      "id": "SkuDive", "group": "zenq", "name": "SkuDive", "version": "1.0.0", "status": "beta",
+      "id": "SkuDive", "published": false, "group": "zenq", "name": "SkuDive", "version": "1.0.0", "status": "beta",
       "summary": {
         "fr": "Plonger au clavier avec Sku 43.3 : une touche pour descendre sous l'eau (Suppr), une touche pour le verrou d'inclinaison de la caméra (Inser), rappel des touches à la première baignade.",
         "en": "Diving by keyboard with Sku 43.3: a key to swim down (Delete), a key for the camera pitch lock (Insert), key reminder on the first swim."
@@ -112,10 +112,10 @@
       "requires": ["Sku"], "optional": [],
       "folders": ["SkuDive"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-Dive", "changelog": "https://github.com/ZenqFR/Sku-Dive/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-Dive/issues/new" },
-      "packages": [ { "key": "SkuDive", "type": "github-release", "repo": "ZenqFR/Sku-Dive", "asset": "SkuDive-{tag}.zip", "roots": ["SkuDive"] } ]
+      "packages": [ { "key": "SkuDive", "type": "github-release", "repo": "ZenqFR/Sku-Dive", "asset": "SkuDive-{version}.zip", "roots": ["SkuDive"] } ]
     },
     {
-      "id": "SkuHunterAlerts", "group": "zenq", "name": "SkuHunterAlerts", "version": "1.2.1", "status": "beta",
+      "id": "SkuHunterAlerts", "published": false, "group": "zenq", "name": "SkuHunterAlerts", "version": "1.2.1", "status": "beta",
       "summary": {
         "fr": "Alertes de combat parlées pour chasseur : familier bas en vie, mort ou malheureux, toi bas en vie, munitions, cible en incantation (interruptible ou non) ; et « Salve sur la cible » sans souris (Alt+S vise, Alt+L lance), en cours de mise au point.",
         "en": "Spoken combat alerts for hunters: pet low, dead or unhappy, you low, ammunition, target casting (interruptible or not); plus \"Volley on the target\" without a mouse (Alt+S aims, Alt+L casts), still being tuned."
@@ -123,10 +123,10 @@
       "requires": ["Sku"], "optional": [],
       "folders": ["SkuHunterAlerts"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-HunterAlerts", "changelog": "https://github.com/ZenqFR/Sku-HunterAlerts/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-HunterAlerts/issues/new" },
-      "packages": [ { "key": "SkuHunterAlerts", "type": "github-release", "repo": "ZenqFR/Sku-HunterAlerts", "asset": "SkuHunterAlerts-{tag}.zip", "roots": ["SkuHunterAlerts"] } ]
+      "packages": [ { "key": "SkuHunterAlerts", "type": "github-release", "repo": "ZenqFR/Sku-HunterAlerts", "asset": "SkuHunterAlerts-{version}.zip", "roots": ["SkuHunterAlerts"] } ]
     },
     {
-      "id": "SkuQuestJournal", "group": "zenq", "name": "SkuQuestJournal", "version": "1.1.0", "status": "beta",
+      "id": "SkuQuestJournal", "published": false, "group": "zenq", "name": "SkuQuestJournal", "version": "1.1.0", "status": "beta",
       "summary": {
         "fr": "Registre de toutes les quêtes rendues (heure, niveau, zone, XP, argent) et journal de quêtes en cours par zone avec états et objectifs, chacun copiable en texte (Ctrl+C) depuis Maj+F1.",
         "en": "Record of every quest turned in (time, level, zone, XP, money) and the current quest log by zone with states and objectives, each copyable as text (Ctrl+C) from Shift+F1."
@@ -134,10 +134,10 @@
       "requires": ["Sku"], "optional": ["Questie"],
       "folders": ["SkuQuestJournal"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-QuestJournal", "changelog": "https://github.com/ZenqFR/Sku-QuestJournal/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-QuestJournal/issues/new" },
-      "packages": [ { "key": "SkuQuestJournal", "type": "github-release", "repo": "ZenqFR/Sku-QuestJournal", "asset": "SkuQuestJournal-{tag}.zip", "roots": ["SkuQuestJournal"] } ]
+      "packages": [ { "key": "SkuQuestJournal", "type": "github-release", "repo": "ZenqFR/Sku-QuestJournal", "asset": "SkuQuestJournal-{version}.zip", "roots": ["SkuQuestJournal"] } ]
     },
     {
-      "id": "SkuTrainerNews", "group": "zenq", "name": "SkuTrainerNews", "version": "1.0.0", "status": "beta",
+      "id": "SkuTrainerNews", "published": false, "group": "zenq", "name": "SkuTrainerNews", "version": "1.0.0", "status": "beta",
       "summary": {
         "fr": "« Quoi de neuf chez mon maître ? » : mémorise chaque visite de maître de classe ou de métier, annonce au passage de niveau ce qui devient apprenable et son coût, et rappelle un maître proche qui a quelque chose pour toi.",
         "en": "\"What's new at my trainer?\": remembers every class or profession trainer visit, announces at level-up what became learnable and its cost, and reminds you of a nearby trainer who has something for you."
@@ -145,10 +145,10 @@
       "requires": ["Sku"], "optional": [],
       "folders": ["SkuTrainerNews"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-TrainerNews", "changelog": "https://github.com/ZenqFR/Sku-TrainerNews/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-TrainerNews/issues/new" },
-      "packages": [ { "key": "SkuTrainerNews", "type": "github-release", "repo": "ZenqFR/Sku-TrainerNews", "asset": "SkuTrainerNews-{tag}.zip", "roots": ["SkuTrainerNews"] } ]
+      "packages": [ { "key": "SkuTrainerNews", "type": "github-release", "repo": "ZenqFR/Sku-TrainerNews", "asset": "SkuTrainerNews-{version}.zip", "roots": ["SkuTrainerNews"] } ]
     },
     {
-      "id": "SkuZoneWaypoints", "group": "zenq", "name": "SkuZoneWaypoints", "version": "1.0.0", "status": "beta",
+      "id": "SkuZoneWaypoints", "published": false, "group": "zenq", "name": "SkuZoneWaypoints", "version": "1.0.0", "status": "beta",
       "summary": {
         "fr": "« Points de zone » : les points de passage de Sku, les sorties de la zone, les utilitaires (vol, aubergiste, banque, HDV, écuries, réparation…) et les maîtres et fournisseurs utiles à ton personnage, triés par distance, filtrables en tapant, avec « Route vers » sur les chemins de Sku.",
         "en": "\"Zone points\": Sku's waypoints, the zone's exits, utilities (flight, innkeeper, bank, AH, stables, repair…) and the trainers and suppliers relevant to your character, sorted by distance, filterable by typing, with \"Route to\" on Sku's paths."
@@ -156,10 +156,10 @@
       "requires": ["Sku"], "optional": [],
       "folders": ["SkuZoneWaypoints"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/Sku-ZoneWaypoints", "changelog": "https://github.com/ZenqFR/Sku-ZoneWaypoints/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-ZoneWaypoints/issues/new" },
-      "packages": [ { "key": "SkuZoneWaypoints", "type": "github-release", "repo": "ZenqFR/Sku-ZoneWaypoints", "asset": "SkuZoneWaypoints-{tag}.zip", "roots": ["SkuZoneWaypoints"] } ]
+      "packages": [ { "key": "SkuZoneWaypoints", "type": "github-release", "repo": "ZenqFR/Sku-ZoneWaypoints", "asset": "SkuZoneWaypoints-{version}.zip", "roots": ["SkuZoneWaypoints"] } ]
     },
     {
-      "id": "SkinningInfo", "group": "zenq", "name": "SkinningInfo", "version": "1.0.0", "status": "beta",
+      "id": "SkinningInfo", "published": false, "group": "zenq", "name": "SkinningInfo", "version": "1.0.0", "status": "beta",
       "summary": {
         "fr": "Dans l'infobulle d'une créature : dépeçable ou non, compétence requise face à la tienne, cuir, peau ou écailles probables. Autonome ; avec Sku, lu au changement de cible et sur une touche.",
         "en": "In a creature's tooltip: skinnable or not, required skill against yours, likely leather, hide or scales. Standalone; with Sku, spoken on target change and on a key."
@@ -167,10 +167,10 @@
       "requires": [], "optional": ["Sku"],
       "folders": ["SkinningInfo"], "defaultChecked": true,
       "links": { "home": "https://github.com/ZenqFR/SkinningInfo", "changelog": "https://github.com/ZenqFR/SkinningInfo/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/SkinningInfo/issues/new" },
-      "packages": [ { "key": "SkinningInfo", "type": "github-release", "repo": "ZenqFR/SkinningInfo", "asset": "SkinningInfo-{tag}.zip", "roots": ["SkinningInfo"] } ]
+      "packages": [ { "key": "SkinningInfo", "type": "github-release", "repo": "ZenqFR/SkinningInfo", "asset": "SkinningInfo-{version}.zip", "roots": ["SkinningInfo"] } ]
     },
     {
-      "id": "SkuVoiceProbe", "group": "diag", "name": "SkuVoiceProbe", "version": "1.0.0", "status": "beta",
+      "id": "SkuVoiceProbe", "published": false, "group": "diag", "name": "SkuVoiceProbe", "version": "1.0.0", "status": "beta",
       "summary": {
         "fr": "Sonde de diagnostic : trace le parcours de chaque phrase que Sku veut dire (demandée, transmise, commencée, finie, coupée) pour comprendre pourquoi le lecteur d'écran se tait. À installer seulement pour enquêter.",
         "en": "Diagnostic probe: traces the path of every line Sku wants to say (asked, handed over, started, finished, cut) to understand why the screen reader goes silent. Install only to investigate."
@@ -178,7 +178,7 @@
       "requires": ["Sku"], "optional": [],
       "folders": ["SkuVoiceProbe"], "defaultChecked": false,
       "links": { "home": "https://github.com/ZenqFR/Sku-VoiceProbe", "changelog": "https://github.com/ZenqFR/Sku-VoiceProbe/blob/main/CHANGELOG.md", "issues": "https://github.com/ZenqFR/Sku-VoiceProbe/issues/new" },
-      "packages": [ { "key": "SkuVoiceProbe", "type": "github-release", "repo": "ZenqFR/Sku-VoiceProbe", "asset": "SkuVoiceProbe-{tag}.zip", "roots": ["SkuVoiceProbe"] } ]
+      "packages": [ { "key": "SkuVoiceProbe", "type": "github-release", "repo": "ZenqFR/Sku-VoiceProbe", "asset": "SkuVoiceProbe-{version}.zip", "roots": ["SkuVoiceProbe"] } ]
     },
 
     {

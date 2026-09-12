@@ -361,7 +361,20 @@
       .catch(function () { releases[repo] = { error: true }; done(); });
   }
 
+  function unpublishedCard(a) {
+    var id = esc(a.id.toLowerCase());
+    var h = '<article class="card" id="' + id + '" aria-labelledby="' + id + '-title">';
+    h += '<h3 id="' + id + '-title">' + esc(a.name) + ' <span class="pill beta">' + t("bientôt en ligne", "coming soon") + '</span>';
+    if (a.version) h += ' <span class="pill">v' + esc(a.version) + '</span>';
+    h += '</h3>';
+    h += '<p class="desc">' + esc(loc(a.summary)) + '</p>';
+    h += '<p class="section-intro">' + t("Construit et en test ; il sera téléchargeable ici et par l\'installateur dès sa publication.", "Built and being tested; it will be downloadable here and through the installer once published.") + '</p>';
+    h += '</article>';
+    return h;
+  }
+
   function cardHtml(a) {
+    if (a.published === false) return unpublishedCard(a);
     var repo = a.packages && a.packages[0] && a.packages[0].repo;
     var home = (a.links && a.links.home) || (repo ? "https://github.com/" + repo : "#");
     var issues = (a.links && a.links.issues) || (repo ? "https://github.com/" + repo + "/issues/new" : null);
